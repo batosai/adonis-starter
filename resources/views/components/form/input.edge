@@ -1,0 +1,25 @@
+{{--
+  Check and see if the current input has a pre-existing value inside the
+  flashMessages.
+--}}
+@set('oldValue', flashMessages.get($context.name) || '')
+
+{{--
+  The default set of styling classes for the input. One can pass
+  the class attribute to define their own
+--}}
+@set('classes', 'block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input')
+
+@if(type === 'radio')
+  @set('classes', 'w-5 h-5')
+@end
+
+<input {{
+  $props.serialize({
+    class: classes,
+    value: oldValue,
+    placeholder: $context.placeholder,
+    id: $context.name,
+    name: $context.name
+  }, false)
+}} />

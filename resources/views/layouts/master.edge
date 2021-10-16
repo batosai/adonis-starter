@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="app()" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+
+    <meta name="theme-color" content="#ffffff">
+
+    {{-- Alpine and turbo are not friends as of now and hence we need to disable turbo cache --}}
+    <meta name="turbo-cache-control" content="no-cache">
+
+    {{-- Compiled assets --}}
+    @entryPointStyles('app')
+    @entryPointScripts('app')
+  </head>
+
+  <body>
+    <div
+      class="flex h-screen bg-gray-50 dark:bg-gray-900"
+      :class="{ 'overflow-hidden': isSideMenuOpen}"
+    >
+      @include('partials/sidebar/sidebar')
+
+      <div class="flex flex-col flex-1">
+        @include('partials/header')
+        <main class="h-full pb-16 overflow-y-auto">
+          @!section('body')
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

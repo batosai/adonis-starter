@@ -1,0 +1,43 @@
+{
+  "name": "adonis-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ace serve --watch",
+    "build": "node ace build --production",
+    "start": "node build/server.js",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^5.3.7",
+    "@symfony/webpack-encore": "^1.6.1",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "adonis-preset-ts": "^2.1.0",
+    "alpinejs": "^3.4.2",
+    "pino-pretty": "^7.0.1",
+    "postcss-loader": "^6.1.1",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.16",
+    "tailwindcss-multi-theme": "^1.0.4",
+    "typescript": "~4.2",
+    "youch": "^2.2.2",
+    "youch-terminal": "^1.1.1"
+  },
+  "dependencies": {
+    "@adonisjs/auth": "^8.0.9",
+    "@adonisjs/core": "^5.4.0",
+    "@adonisjs/lucid": "^16.2.1",
+    "@adonisjs/repl": "^3.1.6",
+    "@adonisjs/session": "^6.1.2",
+    "@adonisjs/shield": "^7.0.6",
+    "@adonisjs/view": "^6.1.1",
+    "@hotwired/turbo": "^7.0.1",
+    "chart.js": "^3.5.1",
+    "luxon": "^2.0.2",
+    "phc-argon2": "^1.1.2",
+    "proxy-addr": "^2.0.7",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.20",
+    "sqlite3": "^4.2.0"
+  }
+}
