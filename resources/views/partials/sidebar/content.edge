@@ -53,7 +53,7 @@
     </li>
     <li class="relative px-6 py-3">
       @component('components/sidebar/link', {
-        isActive: request.matchesRoute('users.index'),
+        isActive: request.matchesRoute(['users.index', 'users.create', 'users.store', 'users.edit', 'users.update']) ,
         text: 'Users',
         href: route('users.index')
       })
