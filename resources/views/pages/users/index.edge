@@ -1,15 +1,11 @@
 @layout('layouts/master')
 
-@set('title', 'My Profile')
-@set('description', 'View a list of polls created by you')
+@set('title', 'Users')
+@set('description', 'View a list of users')
 
 @section('body')
 <div class="container px-6 mx-auto grid">
-  <h2
-    class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-  >
-    Dashboard
-  </h2>
+  @!title({ text: 'List of users' })
 
   <!-- Cards -->
   <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -69,7 +65,10 @@
     </div>
   </div>
 
-  <!-- New Table -->
+  <div>
+    @!button.regular({ text: 'New', url: route('users.create'), classes: 'float-right mb-4' })
+  </div>
+
   <div class="w-full overflow-hidden rounded-lg shadow-xs">
     <div class="w-full overflow-x-auto">
       <table class="w-full whitespace-no-wrap">

@@ -1,0 +1,11 @@
+@set('defaultClasses', 'my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200')
+
+<h1
+  {{ $props.serialize({ class: [classes, defaultClasses] }, false) }}
+>
+  @if(text)
+    {{ text }}
+  @else
+    {{{ await $slots.main() }}}
+  @end
+</h1>
