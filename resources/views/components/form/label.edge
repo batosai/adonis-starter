@@ -2,11 +2,11 @@
   The default set of styling classes for the input. One can pass
   the class attribute to define their own
 --}}
-@set('classes', 'font-medium text-gray-800')
+@set('defaultClasses', 'text-gray-700 dark:text-gray-400')
 
 <label
   for="{{ $context.name }}"
-  {{ $props.serialize({ class: classes }, false) }}
+  {{ $props.serialize({ class: [classes, defaultClasses] }, false) }}
 >
   @if(title)
     {{ title }}

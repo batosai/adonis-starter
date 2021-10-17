@@ -4,38 +4,31 @@
 @set('description', 'Log In to participate in polls and create your own polls')
 
 @section('body')
-  <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-    Login
-  </h1>
+  @!title({ text: 'Login' })
 
   <form action="{{ route('login') }}" method="POST">
-    <label class="block text-sm">
-      @form.control({
-        name: 'email',
-        placeholder:'jane.doe@sample.com',
-        errorKey: 'auth.errors.uid'
-      })
-        <span class="text-gray-700 dark:text-gray-400">Email</span>
-        @!form.input({ type: 'email' })
-        @!form.error()
-      @end
-    </label>
 
-    <label class="block mt-4 text-sm">
-      @form.control({
-        name: 'password',
-        placeholder:'***************',
-        errorKey: 'auth.errors.password'
-      })
-        <span class="text-gray-700 dark:text-gray-400">Password</span>
-        @!form.input({ type: 'password' })
-        @!form.error()
-      @end
-    </label>
+    @form.control({
+      name: 'email',
+      placeholder:'jane.doe@sample.com',
+      errorKey: 'auth.errors.uid'
+    })
+      @!form.label({ title: 'Email', classes:'block mb-2'  })
+      @!form.input({ type: 'email' })
+      @!form.error()
+    @end
 
-    <button type="sumbit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-      Log In
-    </button>
+    @form.control({
+      name: 'password',
+      placeholder:'***************',
+      errorKey: 'auth.errors.password'
+    })
+      @!form.label({ title: 'Password', classes:'block mt-4 mb-2' })
+      @!form.input({ type: 'password' })
+      @!form.error()
+    @end
+
+    @!form.submit({ text: 'Log In' })
   </form>
 
   <p class="mt-4">
