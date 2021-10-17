@@ -1,0 +1,36 @@
+@layout('layouts/master')
+
+@set('title', 'Create a user')
+@set('description', 'Create a user')
+
+@section('body')
+  <div class="container px-4">
+    @!title({ text: 'Create a user' })
+
+    <div
+      class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+    >
+      @form.control({
+        name: 'username',
+        placeholder:'jane doe',
+        errorKey: 'auth.errors.username'
+      })
+        @!form.label({ title: 'Username', classes:"block mb-2" })
+        @!form.input({ type: 'text' })
+        @!form.error()
+      @end
+
+      @form.control({
+        name: 'email',
+        placeholder:'jane.doe@sample.com',
+        errorKey: 'auth.errors.uid'
+      })
+        @!form.label({ title: 'Email Address', classes:'block mt-4 mb-2' })
+        @!form.input({ type: 'email' })
+        @!form.error()
+      @end
+
+      @!form.submit({ text: 'Create' })
+    </div>
+  </div>
+@end
