@@ -1,0 +1,24 @@
+@set('disabledClasses', '')
+@set('defaultClasses', 'font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple')
+
+@unless($props.customClasses)
+  @set('customClasses', 'px-4 py-2')
+@else
+  @set('customClasses', $props.customClasses)
+@end
+
+@if($props.disabled)
+  @set('disabledClasses', 'opacity-50 cursor-not-allowed')
+  @set('defaultClasses', 'font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg focus:outline-none')
+@end
+
+<a
+  href="{{ url }}"
+  {{ $props.serialize({ class: [classes, defaultClasses, customClasses, disabledClasses] }, false) }}
+>
+  @if(text)
+    {{ text }}
+  @else
+    {{{ await $slots.main() }}}
+  @end
+</a>
