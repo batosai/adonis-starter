@@ -28,6 +28,9 @@ export default class User extends BaseModel {
   @column()
   public avatarUrl: string | null
 
+  @column.dateTime({ autoCreate: false })
+  public lastLoginAt: DateTime
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

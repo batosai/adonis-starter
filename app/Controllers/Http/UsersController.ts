@@ -31,6 +31,6 @@ export default class UsersController {
      */
     const user = await User.create(payload)
 
-    response.redirect('users.index')
+    response.redirect().toPath('/users')
   }
 }

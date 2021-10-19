@@ -8,7 +8,7 @@
   The default set of styling classes for the select box. One can pass
   the class attribute to define their own
 --}}
-@set('classes', 'border-2 border-gray-200 text-gray-800 shadow bg-white py-3 px-4 rounded-md w-full appearance-none focus:border-teal-700 focus:outline-none')
+@set('classes', 'block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray')
 
 <select {{ $props.serializeExcept(['options'], {
   class: classes,
