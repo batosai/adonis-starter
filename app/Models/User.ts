@@ -2,13 +2,13 @@ import uuid from 'uuid/v4'
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeCreate, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { attachment, AttachmentContract } from '@ioc:Adonis/Addons/AttachmentLite'
 
 export default class User extends BaseModel {
   public static selfAssignPrimaryKey = true
 
   @column({ isPrimary: true })
   public id: string
-
 
   @column()
   public username: string
@@ -25,8 +25,8 @@ export default class User extends BaseModel {
   @column.dateTime({ autoCreate: false })
   public disabledOn: DateTime
 
-  @column()
-  public avatarUrl: string | null
+  @attachment({ folder: 'avatars' })
+  public avatar: AttachmentContract | null
 
   @column.dateTime({ autoCreate: false })
   public lastLoginAt: DateTime

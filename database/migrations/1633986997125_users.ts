@@ -12,7 +12,7 @@ export default class Users extends BaseSchema {
       table.string('password')
       table.string('role')
       table.timestamp('disabled_on', { useTz: true })
-      table.string('avatarUrl')
+      table.string('avatar')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

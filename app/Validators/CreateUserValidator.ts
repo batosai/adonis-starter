@@ -29,6 +29,10 @@ export default class CreateUserValidator {
       rules.minLength(6),
       rules.confirmed()
     ]),
+    avatar: schema.file({
+      extnames: ['jpg', 'png', 'jpeg', 'heic'],
+      size: '2mb',
+    }),
   })
 
   public messages = {

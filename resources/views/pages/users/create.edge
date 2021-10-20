@@ -10,7 +10,7 @@
     <div
       class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
     >
-      <form action="{{ route('users.store') }}" method="POST">
+      <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @form.control({
           name: 'username',
           placeholder:'jane doe',
@@ -61,6 +61,16 @@
         })
           @!form.label({ title: 'Password confirmation', classes:'block mt-4 mb-2' })
           @!form.input({ type: 'password' })
+          @!form.error()
+        @end
+
+        @form.control({
+          name: 'avatar',
+          placeholder:'***************',
+          errorKey: 'errors.avatar'
+        })
+          @!form.label({ title: 'Avatar', classes:'block mt-4 mb-2' })
+          @!form.input({ type: 'file' })
           @!form.error()
         @end
 

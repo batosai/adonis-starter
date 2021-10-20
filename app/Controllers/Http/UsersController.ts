@@ -1,5 +1,7 @@
 import User from 'App/Models/User'
+import Application from '@ioc:Adonis/Core/Application'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
 import Database from '@ioc:Adonis/Lucid/Database'
 
@@ -21,6 +23,7 @@ export default class UsersController {
   }
 
   public async store({ request, response, auth }: HttpContextContract) {
+    const avatar = request.file('avatar')!
     /**
      * Validate new user account creation form
      */
@@ -29,7 +32,15 @@ export default class UsersController {
     /**
      * Create a new user
      */
-    const user = await User.create(payload)
+    // const user = await User.create(payload)
+    // await payload.avatar.move(Application.tmpPath('uploads'))
+
+    const user = new User()
+    await user
+      .fill(payload)
+
+    user.avatar = Attachment.fromFile(avatar)
+    await user.save()
 
     response.redirect().toPath('/users')
   }
