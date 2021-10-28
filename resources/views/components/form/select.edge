@@ -2,7 +2,7 @@
   Check and see if the current selectbox has a pre-existing value inside the
   flashMessages.
 --}}
-@set('oldValue', flashMessages.get($context.name) || '')
+@set('oldValue', flashMessages.get($context.name) || ($props.value ? $props.value : ''))
 
 {{--
   The default set of styling classes for the select box. One can pass

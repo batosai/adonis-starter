@@ -1,0 +1,86 @@
+@layout('layouts/master')
+
+@set('title', 'Create a user')
+@set('description', 'Create a user')
+
+@section('body')
+
+  <div class="container px-4">
+    @!title({ text: 'Create a user' })
+
+    <div
+      class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+    >
+      <form action="{{ route('users.update', { id: user.id }, {
+        qs: {
+          _method: 'PUT'
+        }
+      }) }}" method="POST" enctype="multipart/form-data">
+        @form.control({
+          name: 'username',
+          placeholder:'jane doe',
+          errorKey: 'errors.username'
+        })
+          @!form.label({ title: 'Username', classes:"block mb-2" })
+          @!form.input({ type: 'text', value: user.username })
+          @!form.error()
+        @end
+
+        @form.control({
+          name: 'email',
+          placeholder:'jane.doe@sample.com',
+          errorKey: 'errors.email'
+        })
+          @!form.label({ title: 'Email Address', classes:'block mt-4 mb-2' })
+          @!form.input({ type: 'email', value: user.email })
+          @!form.error()
+        @end
+
+        @form.control({
+          name: 'role',
+          placeholder:'admin',
+          errorKey: 'errors.role'
+        })
+          @!form.label({ title: 'Role', classes:'block mt-4 mb-2' })
+          @!form.select({ options: [
+            { text: 'Admin', value: 'admin' },
+            { text: 'Member', value: 'member' },
+          ], value: user.role })
+          @!form.error()
+        @end
+
+        @form.control({
+          name: 'password',
+          placeholder:'***************',
+          errorKey: 'errors.password'
+        })
+          @!form.label({ title: 'Password', classes:'block mt-4 mb-2' })
+          @!form.input({ type: 'password' })
+          @!form.error()
+        @end
+
+        @form.control({
+          name: 'password_confirmation',
+          placeholder:'***************',
+          errorKey: 'errors.password_confirmation'
+        })
+          @!form.label({ title: 'Password confirmation', classes:'block mt-4 mb-2' })
+          @!form.input({ type: 'password' })
+          @!form.error()
+        @end
+
+        @form.control({
+          name: 'avatar',
+          placeholder:'***************',
+          errorKey: 'errors.avatar'
+        })
+          @!form.label({ title: 'Avatar', classes:'block mt-4 mb-2' })
+          @!form.input({ type: 'file' })
+          @!form.error()
+        @end
+
+        @!form.submit({ text: 'Create' })
+      </form>
+    </div>
+  </div>
+@end

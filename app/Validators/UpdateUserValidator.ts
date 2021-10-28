@@ -6,7 +6,7 @@ enum Roles {
   MEMBER = 'member',
 }
 
-export default class CreateUserValidator {
+export default class UpdateUserValidator {
   constructor (protected ctx: HttpContextContract) {
   }
 
@@ -23,9 +23,12 @@ export default class CreateUserValidator {
       rules.unique({
         table: 'users',
         column: 'email',
+        whereNot: {
+          id: this.ctx.user.id
+        }
       }),
     ]),
-    password: schema.string({ trim: true }, [
+    password: schema.string.optional({ trim: true }, [
       rules.minLength(6),
       rules.confirmed()
     ]),
