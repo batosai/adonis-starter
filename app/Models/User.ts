@@ -25,7 +25,7 @@ export default class User extends BaseModel {
   @column.dateTime({ autoCreate: false })
   public disabledOn: DateTime
 
-  @attachment({ folder: 'avatars' })
+  @attachment({ folder: 'avatars', preComputeUrl: true })
   public avatar: AttachmentContract | null
 
   @column.dateTime({ autoCreate: false })

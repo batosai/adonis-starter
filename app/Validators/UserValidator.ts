@@ -6,7 +6,7 @@ enum Roles {
   MEMBER = 'member',
 }
 
-export default class UpdateUserValidator {
+export default class UserValidator {
   constructor (protected ctx: HttpContextContract) {
   }
 
@@ -20,18 +20,25 @@ export default class UpdateUserValidator {
     role: schema.enum(Object.values(Roles)),
     email: schema.string({}, [
       rules.email({ sanitize: true }),
-      rules.unique({
+      rules.unique(this.ctx.user ? {
         table: 'users',
         column: 'email',
         whereNot: {
           id: this.ctx.user.id
         }
+      } : {
+        table: 'users',
+        column: 'email',
       }),
     ]),
-    password: schema.string.optional({ trim: true }, [
-      rules.minLength(6),
-      rules.confirmed()
-    ]),
+    password: this.ctx.user ?
+      schema.string.optional({ trim: true }, [
+        rules.minLength(6),
+        rules.confirmed()
+      ]) : schema.string({ trim: true }, [
+        rules.minLength(6),
+        rules.confirmed()
+      ]),
     avatar: schema.file.optional({
       extnames: ['jpg', 'png', 'jpeg', 'heic'],
       size: '2mb',

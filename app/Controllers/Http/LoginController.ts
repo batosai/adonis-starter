@@ -1,4 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { DateTime } from 'luxon'
 
 /**
  * Handle user login and logout requests.
@@ -21,6 +22,10 @@ export default class LoginController {
      * validations.
      */
     await auth.attempt(request.input('email'), request.input('password'))
+
+    auth.user.last_login_at = DateTime.local()
+    console.log(auth.user)
+    await auth.user.save()
 
     /**
      * Redirect to the home page
