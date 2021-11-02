@@ -57,6 +57,7 @@ export default function() {
     isModalOpen: false,
     trapCleanup: null,
     openModal() {
+      document.querySelector('#modal').parentElement.classList.remove('hidden')
       this.isModalOpen = true
       this.trapCleanup = focusTrap(document.querySelector('#modal'))
     },
@@ -64,5 +65,7 @@ export default function() {
       this.isModalOpen = false
       this.trapCleanup()
     },
+    // Confirm
+    elmt: null
   }
 }

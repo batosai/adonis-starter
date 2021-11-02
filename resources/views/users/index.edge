@@ -4,196 +4,200 @@
 @set('description', 'View a list of users')
 
 @section('body')
-<div class="container px-6 mx-auto grid">
-  @!title({ text: 'List of users' })
+  <div class="container px-6 mx-auto grid">
+    @!title({ text: 'List of users' })
 
-  <!-- Cards -->
-  <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-    <!-- Card -->
-    <div
-      class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-    >
+    <!-- Cards -->
+    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+      <!-- Card -->
       <div
-        class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
+        class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
       >
-        @!svg.users()
-      </div>
-      <div>
-        <p
-          class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+        <div
+          class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
         >
-          Total users
-        </p>
-        <p
-          class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-        >
-          {{ users.total }}
-        </p>
+          @!svg.users()
+        </div>
+        <div>
+          <p
+            class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+          >
+            Total users
+          </p>
+          <p
+            class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+          >
+            {{ users.total }}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div>
-    @!button.regular({ text: 'New', url: route('users.create'), classes: 'float-right mb-4' })
-  </div>
+    <div>
+      @!button.regular({ text: 'New', url: route('users.create'), classes: 'float-right mb-4' })
+    </div>
 
-  <div class="w-full overflow-hidden rounded-lg shadow-xs">
-    <div class="w-full overflow-x-auto">
-      <table class="w-full whitespace-no-wrap">
-        <thead>
-          <tr
-            class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+      <div class="w-full overflow-x-auto">
+        <table class="w-full whitespace-no-wrap">
+          <thead>
+            <tr
+              class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+            >
+              <th class="px-4 py-3">User</th>
+              <th class="px-4 py-3">Role</th>
+              <th class="px-4 py-3">Status</th>
+              <th class="px-4 py-3">Date</th>
+              <th class="px-4 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody
+            class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
           >
-            <th class="px-4 py-3">User</th>
-            <th class="px-4 py-3">Role</th>
-            <th class="px-4 py-3">Status</th>
-            <th class="px-4 py-3">Date</th>
-            <th class="px-4 py-3">Actions</th>
-          </tr>
-        </thead>
-        <tbody
-          class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
-        >
-          @each(user in users)
-          <tr class="text-gray-700 dark:text-gray-400">
-            <td class="px-4 py-3">
-              <div class="flex items-center text-sm">
-                <!-- Avatar with inset shadow -->
-                <div
-                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+            @each(user in users)
+            <tr class="text-gray-700 dark:text-gray-400">
+              <td class="px-4 py-3">
+                <div class="flex items-center text-sm">
+                  <!-- Avatar with inset shadow -->
+                  <div
+                    class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                  >
+                    @if(user.avatar)
+                      <img
+                        class="object-cover w-full h-full rounded-full"
+                        src="{{ user.avatar.url }}"
+                        alt=""
+                        loading="lazy"
+                      />
+                      <div
+                        class="absolute inset-0 rounded-full shadow-inner"
+                        aria-hidden="true"
+                      ></div>
+                    @end
+                  </div>
+                  <div>
+                    <p class="font-semibold">{{ user.username }}</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                      {{ user.email }}
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3 text-xs">
+                <span
+                  class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                 >
-                  @if(user.avatar)
-                    <img
-                      class="object-cover w-full h-full rounded-full"
-                      src="{{ user.avatar.url }}"
-                      alt=""
-                      loading="lazy"
-                    />
-                    <div
-                      class="absolute inset-0 rounded-full shadow-inner"
-                      aria-hidden="true"
-                    ></div>
+                {{ user.role.charAt(0).toUpperCase() + user.role.slice(1) }}
+                </span>
+              </td>
+              <td class="px-4 py-3 text-xs">
+                @if(user.disabled_on)
+                <span
+                  class="px-2 py-1 font-semibold leading-tight text-red-700 bg-green-100 rounded-full dark:bg-red-700 dark:text-green-100"
+                >
+                  Disabled
+                </span>
+                @else
+                <span
+                  class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                >
+                  Active
+                </span>
+                @end
+              </td>
+              <td class="px-4 py-3 text-sm">
+                {{ user.created_at }}
+              </td>
+              <td class="px-4 py-3">
+                <div class="flex items-center space-x-4 text-sm">
+                  <a href="{{route('users.edit', {id: user.id})}}"
+                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                    aria-label="Edit"
+                  >
+                    @!svg.edit()
+                  </a>
+                  @if(auth.user.id !== user.id)
+                    <form @submit.prevent="elmt = $el; openModal()" action="{{route('users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
+                      <button
+                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                        aria-label="Delete"
+                      >
+                        @!svg.delete()
+                      </button>
+                    </form>
                   @end
                 </div>
-                <div>
-                  <p class="font-semibold">{{ user.username }}</p>
-                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                    {{ user.email }}
-                  </p>
-                </div>
-              </div>
-            </td>
-            <td class="px-4 py-3 text-xs">
-              <span
-                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-              >
-              {{ user.role.charAt(0).toUpperCase() + user.role.slice(1) }}
-              </span>
-            </td>
-            <td class="px-4 py-3 text-xs">
-              @if(user.disabled_on)
-              <span
-                class="px-2 py-1 font-semibold leading-tight text-red-700 bg-green-100 rounded-full dark:bg-red-700 dark:text-green-100"
-              >
-                Disabled
-              </span>
-              @else
-              <span
-                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-              >
-                Active
-              </span>
-              @end
-            </td>
-            <td class="px-4 py-3 text-sm">
-              {{ user.created_at }}
-            </td>
-            <td class="px-4 py-3">
-              <div class="flex items-center space-x-4 text-sm">
-                <a href="{{route('users.edit', {id: user.id})}}"
-                  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                  aria-label="Edit"
-                >
-                  @!svg.edit()
-                </a>
-                <form action="{{route('users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
-                  <button
-                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                    aria-label="Delete"
-                  >
-                    @!svg.delete()
-                  </button>
-                </form>
-              </div>
-            </td>
-          </tr>
-          @end
-        </tbody>
-      </table>
-    </div>
-    <div
-      class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
-    >
-      <span class="flex items-center col-span-3">
-        Showing 21-30 of 100
-      </span>
-      <span class="col-span-2"></span>
-      <!-- Pagination -->
-      <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-        <nav aria-label="Table navigation">
-          <ul class="inline-flex items-center">
-            @if(users.total > 1 && users.currentPage > 1)
-            <li>
-              <a href="{{ (users.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                <svg
-                  aria-hidden="true"
-                  class="w-4 h-4 fill-current"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </li>
+              </td>
+            </tr>
             @end
-
-            @each(anchor in users.getUrlsForRange(1, users.lastPage))
-              @set('klass', 'px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple')
-              @if(anchor.page === users.currentPage)
-                @set('klass', 'px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple')
-              @end
-
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+      >
+        <span class="flex items-center col-span-3">
+          Showing 21-30 of 100
+        </span>
+        <span class="col-span-2"></span>
+        <!-- Pagination -->
+        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+          <nav aria-label="Table navigation">
+            <ul class="inline-flex items-center">
+              @if(users.total > 1 && users.currentPage > 1)
               <li>
-                <a href="{{ anchor.url }}" class="{{ klass }}">
-                  {{ anchor.page }}
+                <a href="{{ (users.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
+                  <svg
+                    aria-hidden="true"
+                    class="w-4 h-4 fill-current"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
                 </a>
               </li>
-            @endeach
+              @end
 
-            @if(users.total > 1 && users.currentPage < users.lastPage)
-            <li>
-              <a href="{{ (users.getUrlsForRange(users.lastPage, users.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                <svg
-                  class="w-4 h-4 fill-current"
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </li>
-            @end
-          </ul>
-        </nav>
-      </span>
+              @each(anchor in users.getUrlsForRange(1, users.lastPage))
+                @set('klass', 'px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple')
+                @if(anchor.page === users.currentPage)
+                  @set('klass', 'px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple')
+                @end
+
+                <li>
+                  <a href="{{ anchor.url }}" class="{{ klass }}">
+                    {{ anchor.page }}
+                  </a>
+                </li>
+              @endeach
+
+              @if(users.total > 1 && users.currentPage < users.lastPage)
+              <li>
+                <a href="{{ (users.getUrlsForRange(users.lastPage, users.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
+                  <svg
+                    class="w-4 h-4 fill-current"
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </a>
+              </li>
+              @end
+            </ul>
+          </nav>
+        </span>
+      </div>
     </div>
   </div>
-</div>
+
+  @!confirm({ title: 'Confirmation', text: 'Are you sure ?'})
 @end

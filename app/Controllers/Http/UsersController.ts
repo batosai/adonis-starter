@@ -74,5 +74,4 @@ export default class UsersController {
 }
 
 // todo type enum en db
-// Validation delete
 // gestion des roles

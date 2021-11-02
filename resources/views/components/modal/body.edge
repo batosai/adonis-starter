@@ -1,0 +1,12 @@
+<div class="mt-4 mb-6">
+  <!-- Modal title -->
+  @if(title)
+    <p
+      class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300"
+    >
+      {{ title }}
+    </p>
+  @end
+  <!-- Modal description -->
+  {{{ await $slots.main() }}}
+</div>
