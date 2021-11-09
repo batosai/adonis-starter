@@ -4,7 +4,9 @@ import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import UserValidator from 'App/Validators/UserValidator'
 
 export default class UsersController {
-  public async index({ request, view }: HttpContextContract) {
+  public async index({ request, view, auth, bouncer }: HttpContextContract) {
+    await bouncer.with('UserPolicy').authorize('viewList', auth.user)
+
     const page = request.input('page', 1)
     const limit = 10
 
@@ -15,11 +17,13 @@ export default class UsersController {
     })
   }
 
-  public async create({ view }: HttpContextContract) {
+  public async create({ view, auth, bouncer }: HttpContextContract) {
+    await bouncer.with('UserPolicy').authorize('create', auth.user)
     return view.render('users.create')
   }
 
-  public async store({ request, response }: HttpContextContract) {
+  public async store({ request, response, auth, bouncer }: HttpContextContract) {
+    await bouncer.with('UserPolicy').authorize('create', auth.user)
     const avatar = request.file('avatar')!
     /**
      * Validate new user account creation form
@@ -40,15 +44,18 @@ export default class UsersController {
     response.redirect().toPath('/users')
   }
 
-  public async edit({ request, view }: HttpContextContract) {
+  public async edit({ request, view, auth, bouncer }: HttpContextContract) {
     const user = await User.findOrFail(request.param('id'))
+    await bouncer.with('UserPolicy').authorize('update', auth.user, user)
+
     return view.render('users.edit', {
       user
     })
   }
 
-  public async update({ request, response }: HttpContextContract) {
+  public async update({ request, response, auth, bouncer }: HttpContextContract) {
     const user = await User.findOrFail(request.param('id'))
+    await bouncer.with('UserPolicy').authorize('update', auth.user, user)
     const avatar = request.file('avatar')!
 
     const payload = await request.validate(new UserValidator({
@@ -62,10 +69,16 @@ export default class UsersController {
     }
     await user.save()
 
-    response.redirect().toPath('/users')
+    if (user.isAdmin) {
+      response.redirect().toPath('/users')
+    }
+    else {
+      response.redirect().toPath('/')
+    }
   }
 
-  public async destroy({ params, response }: HttpContextContract) {
+  public async destroy({ params, response, auth, bouncer }: HttpContextContract) {
+    await bouncer.with('UserPolicy').authorize('delete', auth.user)
     const { id }  = params;
     const user = await User.findOrFail(id)
     await user.delete()

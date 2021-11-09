@@ -7,6 +7,8 @@ import { attachment, AttachmentContract } from '@ioc:Adonis/Addons/AttachmentLit
 export default class User extends BaseModel {
   public static selfAssignPrimaryKey = true
 
+  // Columns
+
   @column({ isPrimary: true })
   public id: string
 
@@ -36,6 +38,14 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  // Getters
+
+  get isAdmin() {
+    return this.role === 'admin'
+  }
+
+  // Hooks
 
   @beforeCreate()
   public static assignUuid(user: User) {
