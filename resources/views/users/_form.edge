@@ -61,4 +61,13 @@
   @!form.error()
 @end
 
+@if(user && user.avatar)
+  <img
+    class="object-cover w-40 mt-2"
+    src="{{ user.avatar.url }}"
+    alt=""
+    loading="lazy"
+  />
+@end
+
 @!form.submit({ text: user ? 'Update' : 'Create' })
