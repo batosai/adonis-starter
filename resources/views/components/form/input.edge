@@ -14,7 +14,9 @@
 @if (flashMessages.has('errors.' + $context.name))
   @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : '')
 @else
-  @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : $props.value)
+  @set($props, 'value', flashMessages.get($context.name) ?
+    flashMessages.get($context.name) :
+    ($props.value ? $props.value : ''))
 @end
 
 <input {{
