@@ -1,10 +1,4 @@
 {{--
-  Check and see if the current input has a pre-existing value inside the
-  flashMessages.
---}}
-@set('oldValue', flashMessages.get($context.name) || '')
-
-{{--
   The default set of styling classes for the input. One can pass
   the class attribute to define their own
 --}}
@@ -16,12 +10,19 @@
   @set('classes', `${classes} form-input`)
 @end
 
+
+@if (flashMessages.has('errors.' + $context.name))
+  @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : '')
+@else
+  @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : $props.value)
+@end
+
 <input {{
-  $props.serialize({
+  $props.serializeExcept(['value'], {
     class: classes,
-    value: oldValue,
     placeholder: $context.placeholder,
     id: $context.name,
     name: $context.name
   }, false)
-}} />
+}}
+value="{{ $props.value }}" />
