@@ -127,7 +127,7 @@ Encore.enableVersioning(Encore.isProduction())
 | to watch them explicitly and livereload the browser.
 |
 */
-Encore.configureDevServerOptions((options) => {
+Encore.configureDevServerOptions(options => {
   /**
    * Normalize "options.static" property to an array
    */
