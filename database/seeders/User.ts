@@ -4,7 +4,7 @@ import User from 'App/Models/User'
 export default class UserSeeder extends BaseSeeder {
   public static developmentOnly = true
 
-  public async run () {
+  public async run() {
     await User.createMany([
       {
         username: 'Jeremy',
@@ -13,6 +13,5 @@ export default class UserSeeder extends BaseSeeder {
         role: 'admin',
       },
     ])
-
   }
 }

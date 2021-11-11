@@ -1,6 +1,6 @@
 import focusTrap from './focus-trap'
 
-export default function() {
+export default function () {
   function getThemeFromLocalStorage() {
     // if user already changed the theme, use it
     if (window.localStorage.getItem('dark')) {
@@ -66,6 +66,6 @@ export default function() {
       this.trapCleanup()
     },
     // Confirm
-    elmt: null
+    elmt: null,
   }
 }

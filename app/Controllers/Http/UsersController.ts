@@ -13,7 +13,7 @@ export default class UsersController {
     const users = await User.query().paginate(page, limit)
 
     return view.render('users.index', {
-      users
+      users,
     })
   }
 
@@ -22,7 +22,12 @@ export default class UsersController {
     return view.render('users.create')
   }
 
-  public async store({ request, response, auth, bouncer }: HttpContextContract) {
+  public async store({
+    request,
+    response,
+    auth,
+    bouncer,
+  }: HttpContextContract) {
     await bouncer.with('UserPolicy').authorize('create', auth.user)
     const avatar = request.file('avatar')!
     /**
@@ -49,18 +54,25 @@ export default class UsersController {
     await bouncer.with('UserPolicy').authorize('update', auth.user, user)
 
     return view.render('users.edit', {
-      user
+      user,
     })
   }
 
-  public async update({ request, response, auth, bouncer }: HttpContextContract) {
+  public async update({
+    request,
+    response,
+    auth,
+    bouncer,
+  }: HttpContextContract) {
     const user = await User.findOrFail(request.param('id'))
     await bouncer.with('UserPolicy').authorize('update', auth.user, user)
     const avatar = request.file('avatar')!
 
-    const payload = await request.validate(new UserValidator({
-      user
-    }))
+    const payload = await request.validate(
+      new UserValidator({
+        user,
+      }),
+    )
 
     await user.merge(payload)
 
@@ -71,15 +83,19 @@ export default class UsersController {
 
     if (user.isAdmin) {
       response.redirect().toPath('/users')
-    }
-    else {
+    } else {
       response.redirect().toPath('/')
     }
   }
 
-  public async destroy({ params, response, auth, bouncer }: HttpContextContract) {
+  public async destroy({
+    params,
+    response,
+    auth,
+    bouncer,
+  }: HttpContextContract) {
     await bouncer.with('UserPolicy').authorize('delete', auth.user)
-    const { id }  = params;
+    const { id } = params
     const user = await User.findOrFail(id)
     await user.delete()
     response.redirect().toPath('/users')

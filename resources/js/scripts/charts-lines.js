@@ -68,7 +68,7 @@ const lineConfig = {
   },
 }
 
-window.addEventListener('load', (event) => {
+window.addEventListener('load', event => {
   const lineCtx = document.getElementById('line')
   window.myLine = new Chart(lineCtx, lineConfig)
-});
+})

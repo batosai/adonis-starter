@@ -8,8 +8,6 @@ import './scripts/charts-lines'
 import './scripts/charts-pie'
 import app from './scripts/init-alpine'
 
-
 Alpine.data('app', app)
 
 Alpine.start()
-

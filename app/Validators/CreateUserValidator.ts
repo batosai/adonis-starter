@@ -7,16 +7,16 @@ enum Roles {
 }
 
 export default class CreateUserValidator {
-  constructor (protected ctx: HttpContextContract) {
-  }
+  constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    username: schema.string({
-      escape: true,
-      trim: true
-    }, [
-      rules.minLength(2),
-    ]),
+    username: schema.string(
+      {
+        escape: true,
+        trim: true,
+      },
+      [rules.minLength(2)],
+    ),
     role: schema.enum(Object.values(Roles)),
     email: schema.string({}, [
       rules.email({ sanitize: true }),
@@ -27,7 +27,7 @@ export default class CreateUserValidator {
     ]),
     password: schema.string({ trim: true }, [
       rules.minLength(6),
-      rules.confirmed()
+      rules.confirmed(),
     ]),
     avatar: schema.file.optional({
       extnames: ['jpg', 'png', 'jpeg', 'heic'],

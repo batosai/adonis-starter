@@ -215,8 +215,7 @@ export const profiler: ProfilerConfig = {
 | to the default config https://git.io/JT0WE
 |
 */
-export const validator: ValidatorConfig = {
-}
+export const validator: ValidatorConfig = {}
 
 /*
 |--------------------------------------------------------------------------
@@ -259,8 +258,8 @@ export const assets: AssetsManagerConfig = {
   */
   script: {
     attributes: {
-      defer: true
-    }
+      defer: true,
+    },
   },
 
   /*
@@ -272,6 +271,6 @@ export const assets: AssetsManagerConfig = {
   |
   */
   style: {
-    attributes: {}
-  }
+    attributes: {},
+  },
 }

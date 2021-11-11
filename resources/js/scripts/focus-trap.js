@@ -3,7 +3,7 @@
  * @param {HTMLElement} element - DOM element to focus trap inside
  * @return {Function} cleanup function
  */
- export default function(element) {
+export default function (element) {
   const focusableElements = getFocusableElements(element)
   const firstFocusableEl = focusableElements[0]
   const lastFocusableEl = focusableElements[focusableElements.length - 1]
@@ -19,9 +19,9 @@
   function getFocusableElements(element = document) {
     return [
       ...element.querySelectorAll(
-        'a, button, details, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        'a, button, details, input, select, textarea, [tabindex]:not([tabindex="-1"])',
       ),
-    ].filter((e) => !e.hasAttribute('disabled'))
+    ].filter(e => !e.hasAttribute('disabled'))
   }
 
   function handleKeyDown(e) {

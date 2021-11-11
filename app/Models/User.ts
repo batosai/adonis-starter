@@ -1,8 +1,16 @@
 import uuid from 'uuid/v4'
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeCreate, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
-import { attachment, AttachmentContract } from '@ioc:Adonis/Addons/AttachmentLite'
+import {
+  column,
+  beforeCreate,
+  beforeSave,
+  BaseModel,
+} from '@ioc:Adonis/Lucid/Orm'
+import {
+  attachment,
+  AttachmentContract,
+} from '@ioc:Adonis/Addons/AttachmentLite'
 
 export default class User extends BaseModel {
   public static selfAssignPrimaryKey = true

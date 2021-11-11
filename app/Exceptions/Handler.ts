@@ -23,7 +23,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
     '500..599': 'errors/server-error',
   }
 
-  constructor () {
+  constructor() {
     super(Logger)
   }
 }

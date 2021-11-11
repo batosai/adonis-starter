@@ -6,7 +6,10 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
  * "login" pages.
  */
 export default class Guest {
-  public async handle({ auth, response }: HttpContextContract, next: () => Promise<void>) {
+  public async handle(
+    { auth, response }: HttpContextContract,
+    next: () => Promise<void>,
+  ) {
     try {
       await auth.authenticate()
       if (auth.isLoggedIn) {

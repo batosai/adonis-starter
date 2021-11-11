@@ -32,8 +32,7 @@ const pieConfig = {
   },
 }
 
-window.addEventListener('load', (event) => {
+window.addEventListener('load', event => {
   const pieCtx = document.getElementById('pie')
   window.myPie = new Chart(pieCtx, pieConfig)
-});
-
+})
