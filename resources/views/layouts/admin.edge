@@ -21,10 +21,10 @@
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"
     >
-      @include('partials/sidebar/sidebar')
+      @include('admin/partials/sidebar/sidebar')
 
       <div class="flex flex-col flex-1">
-        @include('partials/header')
+        @include('admin/partials/header')
         <main class="h-full pb-16 overflow-y-auto">
           @!section('body')
         </main>

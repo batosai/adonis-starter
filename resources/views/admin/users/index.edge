@@ -1,4 +1,4 @@
-@layout('layouts/master')
+@layout('layouts/admin')
 
 @set('title', 'Users')
 @set('description', 'View a list of users')
@@ -34,7 +34,7 @@
     </div>
 
     <div>
-      @!button.regular({ text: 'New', url: route('users.create'), classes: 'float-right mb-4' })
+      @!button.regular({ text: 'New', url: route('admin_users.create'), classes: 'float-right mb-4' })
     </div>
 
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -110,14 +110,14 @@
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
-                  <a href="{{route('users.edit', {id: user.id})}}"
+                  <a href="{{route('admin_users.edit', {id: user.id})}}"
                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                     aria-label="Edit"
                   >
                     @!svg.edit()
                   </a>
                   @if(auth.user.id !== user.id)
-                    <form @submit.prevent="elmt = $el; openModal()" action="{{route('users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
+                    <form @submit.prevent="elmt = $el; openModal()" action="{{route('admin_users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
                       {{ csrfField() }}
                       <button
                         class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
@@ -180,5 +180,5 @@
     </div>
   </div>
 
-  @!confirm({ title: 'Confirmation', text: 'Are you sure ?'})
+  @!admin.confirm({ title: 'Confirmation', text: 'Are you sure ?'})
 @end

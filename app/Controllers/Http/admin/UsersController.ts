@@ -12,14 +12,14 @@ export default class UsersController {
 
     const users = await User.query().paginate(page, limit)
 
-    return view.render('users.index', {
+    return view.render('admin.users.index', {
       users,
     })
   }
 
   public async create({ view, auth, bouncer }: HttpContextContract) {
     await bouncer.with('UserPolicy').authorize('create', auth.user)
-    return view.render('users.create')
+    return view.render('admin.users.create')
   }
 
   public async store({
@@ -46,14 +46,14 @@ export default class UsersController {
     }
     await user.save()
 
-    response.redirect().toPath('/users')
+    response.redirect().toRoute('admin_users.index')
   }
 
   public async edit({ request, view, auth, bouncer }: HttpContextContract) {
     const user = await User.findOrFail(request.param('id'))
     await bouncer.with('UserPolicy').authorize('update', auth.user, user)
 
-    return view.render('users.edit', {
+    return view.render('admin.users.edit', {
       user,
     })
   }
@@ -82,9 +82,9 @@ export default class UsersController {
     await user.save()
 
     if (user.isAdmin) {
-      response.redirect().toPath('/users')
+      response.redirect().toRoute('admin_users.index')
     } else {
-      response.redirect().toPath('/')
+      response.redirect().toRoute('admin/DashboardController.index')
     }
   }
 
@@ -98,7 +98,7 @@ export default class UsersController {
     const { id } = params
     const user = await User.findOrFail(id)
     await user.delete()
-    response.redirect().toPath('/users')
+    response.redirect().toRoute('admin_users.index')
   }
 }
 

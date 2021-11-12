@@ -30,7 +30,7 @@ export default class LoginController {
     /**
      * Redirect to the home page
      */
-    response.redirect('/')
+    response.redirect('/admin')
   }
 
   /**
@@ -38,6 +38,6 @@ export default class LoginController {
    */
   public async destroy({ auth, response }: HttpContextContract) {
     await auth.logout()
-    response.redirect('/')
+    response.redirect('/admin')
   }
 }

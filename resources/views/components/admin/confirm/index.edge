@@ -1,11 +1,11 @@
-@modal()
-  @!modal.header()
-  @modal.body({ title })
+@admin.modal()
+  @!admin.modal.header()
+  @admin.modal.body({ title })
     @if(text)
       <p class="text-sm text-gray-700 dark:text-gray-400">
         {{ text }}
       </p>
     @end
   @end
-  @!confirm.footer()
+  @!admin.confirm.footer()
 @end

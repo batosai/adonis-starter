@@ -7,10 +7,10 @@
   </a>
   <ul class="mt-6">
     <li class="relative px-6 py-3">
-      @component('components/sidebar/link', {
-        isActive: request.matchesRoute('dashboard'),
+      @component('components/admin/sidebar/link', {
+        isActive: request.matchesRoute('admin_dashboard'),
         text: 'Dashboard',
-        href: '../index.html'
+        href: route('admin_dashboard')
       })
         @!svg.dashboard()
       @end
@@ -18,7 +18,7 @@
   </ul>
   <ul>
     <li class="relative px-6 py-3">
-      @component('components/sidebar/link', {
+      @component('components/admin/sidebar/link', {
         text: 'Forms',
         href: '../index.html'
       })
@@ -26,10 +26,10 @@
       @end
     </li>
     <li class="relative px-6 py-3">
-      @component('components/sidebar/link', {
-        isActive: request.matchesRoute(['users.index', 'users.create', 'users.store', 'users.edit', 'users.update']) ,
+      @component('components/admin/sidebar/link', {
+        isActive: request.matchesRoute(['admin_users.index', 'admin_users.create', 'admin_users.store', 'admin_users.edit', 'admin_users.update']) ,
         text: 'Users',
-        href: route('users.index')
+        href: route('admin_users.index')
       })
         @!svg.users()
       @end
