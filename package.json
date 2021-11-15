@@ -11,7 +11,6 @@
   "devDependencies": {
     "@adonisjs/assembler": "^5.3.7",
     "@symfony/webpack-encore": "^1.6.1",
-    "@tailwindcss/custom-forms": "^0.2.1",
     "adonis-preset-ts": "^2.1.0",
     "alpinejs": "^3.4.2",
     "pino-pretty": "^7.0.1",
@@ -34,6 +33,7 @@
     "@adonisjs/shield": "^7.0.6",
     "@adonisjs/view": "^6.1.1",
     "@hotwired/turbo": "^7.0.1",
+    "@tailwindcss/forms": "^0.3.4",
     "chart.js": "^3.5.1",
     "luxon": "^2.0.2",
     "phc-argon2": "^1.1.2",
