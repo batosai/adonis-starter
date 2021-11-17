@@ -5,7 +5,8 @@
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
     "@adonisjs/lucid/build/commands",
-    "@adonisjs/bouncer/build/commands"
+    "@adonisjs/bouncer/build/commands",
+    "@adonisjs/mail/build/commands"
   ],
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
   "aliases": {
@@ -20,7 +21,9 @@
     "./start/bouncer",
     {
       "file": "./start/validator",
-      "environment": ["web"]
+      "environment": [
+        "web"
+      ]
     }
   ],
   "providers": [
@@ -32,7 +35,8 @@
     "@adonisjs/lucid",
     "@adonisjs/auth",
     "@adonisjs/attachment-lite",
-    "@adonisjs/bouncer"
+    "@adonisjs/bouncer",
+    "@adonisjs/mail"
   ],
   "metaFiles": [
     {
@@ -44,5 +48,7 @@
       "reloadServer": false
     }
   ],
-  "aceProviders": ["@adonisjs/repl"]
+  "aceProviders": [
+    "@adonisjs/repl"
+  ]
 }

@@ -2,6 +2,7 @@ import User from 'App/Models/User'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import UserValidator from 'App/Validators/UserValidator'
+import CreateUser from 'App/Mailers/CreateUser'
 
 export default class UsersController {
   public async index({ request, view, auth, bouncer }: HttpContextContract) {
@@ -45,6 +46,8 @@ export default class UsersController {
       user.avatar = Attachment.fromFile(avatar)
     }
     await user.save()
+
+    await new CreateUser(user).sendLater()
 
     response.redirect().toRoute('admin_users.index')
   }
