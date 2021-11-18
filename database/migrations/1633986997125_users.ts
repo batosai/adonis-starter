@@ -10,7 +10,8 @@ export default class Users extends BaseSchema {
       table.string('username', 255).notNullable()
       table.string('password', 180).notNullable()
       table.string('email')
-      table.string('role')
+      // table.string('role')
+      table.enu('role', ['admin', 'member'])
       table.timestamp('disabled_on', { useTz: true })
       table.string('avatar')
 
