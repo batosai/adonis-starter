@@ -104,6 +104,3 @@ export default class UsersController {
     response.redirect().toRoute('admin_users.index')
   }
 }
-
-// todo type enum en db
-// gestion des roles
