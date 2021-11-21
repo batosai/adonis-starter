@@ -27,4 +27,5 @@ export default Env.rules({
   DB_CONNECTION: Env.schema.string(),
   SMTP_HOST: Env.schema.string({ format: 'host' }),
   SMTP_PORT: Env.schema.number(),
+  FROM_EMAIL: Env.schema.string(),
 })

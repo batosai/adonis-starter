@@ -18,7 +18,7 @@ export default class ForgotPasswordMailer extends BaseMailer {
     })
 
     message
-    .from('noreply@example.com', 'Admin')
+    .from(Env.get('FROM_EMAIL'), 'Adonis')
     .to(this.user.email, this.user.username)
     .htmlView('emails/auth/forgot-password', {
       user: this.user,
