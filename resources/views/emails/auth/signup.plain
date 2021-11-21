@@ -1,0 +1,4 @@
+Welcome {{ user.username }}
+
+Click this link to create your password.
+{{ url }}

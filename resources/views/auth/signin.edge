@@ -1,12 +1,16 @@
 @layout('layouts/login')
 
 @set('title', 'Log In')
-@set('description', 'Log In to participate in polls and create your own polls')
+@set('description', 'Login form ')
 
 @section('body')
   @!title({ text: 'Login' })
 
-  <form action="{{ route('login') }}" method="POST">
+  @if (flashMessages.get('auth.errors'))
+    <p class="text-red-700 mt-1.5 text-sm font-medium">Invalide login or password</p>
+  @end
+
+  <form action="{{ route('auth.signin') }}" method="POST">
     {{ csrfField() }}
 
     @form.control({
@@ -16,7 +20,6 @@
     })
       @!form.label({ title: 'Email', classes:'block mb-2' })
       @!form.input({ type: 'email' })
-      @!form.error()
     @end
 
     @form.control({
@@ -26,7 +29,15 @@
     })
       @!form.label({ title: 'Password', classes:'block mt-4 mb-2' })
       @!form.input({ type: 'password' })
-      @!form.error()
+    @end
+
+    @form.control({
+      name: 'remember_me'
+    })
+      @form.label({ classes:'block mt-4 mb-2' })
+        @!form.checkbox({ value: true })
+        Remember me
+      @end
     @end
 
     @!form.submit({ text: 'Log In' })
@@ -35,7 +46,7 @@
   <p class="mt-4">
     <a
       class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-      href="./forgot-password.html"
+      href="{{ route('auth.password.forgot') }}"
     >
       Forgot your password?
     </a>

@@ -38,6 +38,12 @@ export default class User extends BaseModel {
   @attachment({ folder: 'avatars', preComputeUrl: true })
   public avatar: AttachmentContract | null
 
+  @column()
+  public blocked: boolean;
+
+  @column()
+  public rememberMeToken?: string | null
+
   @column.dateTime({ autoCreate: false })
   public lastLoginAt: DateTime
 
@@ -51,6 +57,10 @@ export default class User extends BaseModel {
 
   get isAdmin() {
     return this.role === 'admin'
+  }
+
+  get isMember() {
+    return this.role === 'member'
   }
 
   // Hooks

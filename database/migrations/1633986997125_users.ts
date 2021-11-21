@@ -5,14 +5,16 @@ export default class Users extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, table => {
-      table.string('id').primary()
+      table.uuid('id').primary()
 
       table.string('username', 255).notNullable()
       table.string('password', 180).notNullable()
-      table.string('email')
-      // table.string('role')
-      table.enu('role', ['admin', 'member'])
+      table.string('email').unique().notNullable()
+      table.enu('role', ['admin', 'member']).notNullable().defaultTo('member')
+
+      table.boolean("blocked").notNullable().defaultTo(false);
       table.timestamp('disabled_on', { useTz: true })
+
       table.string('avatar')
 
       /**
@@ -22,7 +24,9 @@ export default class Users extends BaseSchema {
       // table.timestamp('created_at', { useTz: true })
       // table.timestamp('updated_at', { useTz: true })
 
-      table.timestamps(true)
+      table.string("remember_me_token").nullable()
+
+      table.timestamps(true, true)
     })
   }
 

@@ -6,10 +6,10 @@ export enum Roles {
   MEMBER = 'member',
 }
 
-const PASSWORD_MIN_LENGTH = 8
-const PASSWORD_MAX_LENGTH = 255
+export const PASSWORD_MIN_LENGTH = 8
+export const PASSWORD_MAX_LENGTH = 255
 
-function passwordRules() {
+export function passwordRules() {
   const passwordRules = [
     rules.minLength(PASSWORD_MIN_LENGTH),
     rules.maxLength(PASSWORD_MAX_LENGTH),

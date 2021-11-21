@@ -4,24 +4,20 @@ import { DateTime } from 'luxon'
 /**
  * Handle user login and logout requests.
  */
-export default class LoginController {
+export default class SigninController {
   /**
    * Show form to login
    */
   public async create({ view }: HttpContextContract) {
-    return view.render('pages/login')
+    return view.render('auth/signin')
   }
 
   /**
    * Handle login form submissions
    */
   public async store({ request, response, auth }: HttpContextContract) {
-    /**
-     * Attempt to login the user with the email and password. The
-     * "auth.attempt" method will perform all the required
-     * validations.
-     */
-    await auth.attempt(request.input('email'), request.input('password'))
+
+    await auth.attempt(request.input('email'), request.input('password'), request.input('remember_me'))
 
     auth.user.last_login_at = DateTime.local()
     console.log(auth.user)

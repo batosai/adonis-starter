@@ -1,0 +1,14 @@
+@if (flashMessages.has('errors.' + $context.name))
+  @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : '')
+@else
+  @set($props, 'value', flashMessages.get($context.name) ?
+    flashMessages.get($context.name) :
+    ($props.value ? $props.value : ''))
+@end
+
+<input type="hidden" {{
+  $props.serializeExcept(['value'], {
+    name: $context.name
+  }, false)
+}}
+value="{{ $props.value }}" />

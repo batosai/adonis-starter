@@ -13,7 +13,7 @@
   The default set of styling classes for the input. One can pass
   the class attribute to define their own
 --}}
-@set('classes', 'text-red-600 mt-1.5 ml-1.5 text-sm font-medium')
+@set('classes', 'text-red-700 mt-1.5 ml-1.5 text-sm font-medium')
 
 @if(errorMessage)
   <p {{ $props.serialize({ class: classes }, false) }}> {{ errorMessage }} </p>

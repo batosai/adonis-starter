@@ -14,7 +14,7 @@ export default class AuthMiddleware {
   /**
    * The URL to redirect to when request is Unauthorized
    */
-  protected redirectTo = Route.makeUrl('login')
+  protected redirectTo = Route.makeUrl('auth.signin')
 
   /**
    * Authenticates the current HTTP request against a custom set of defined

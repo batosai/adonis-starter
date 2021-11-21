@@ -1,0 +1,19 @@
+@set('classes', 'w-5 h-5 mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray')
+
+
+@if (flashMessages.has('errors.' + $context.name))
+  @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : '')
+@else
+  @set($props, 'value', flashMessages.get($context.name) ?
+    flashMessages.get($context.name) :
+    ($props.value ? $props.value : ''))
+@end
+
+<input type="checkbox" {{
+  $props.serializeExcept(['value'], {
+    class: classes,
+    id: $context.name,
+    name: $context.name
+  }, false)
+}}
+value="{{ $props.value }}" />

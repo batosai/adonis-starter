@@ -2,7 +2,7 @@ import User from 'App/Models/User'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import UserValidator from 'App/Validators/UserValidator'
-import CreateUser from 'App/Mailers/CreateUser'
+import SignupMailer from 'App/Mailers/SignupMailer'
 
 export default class UsersController {
   public async index({ request, view, auth, bouncer }: HttpContextContract) {
@@ -13,14 +13,14 @@ export default class UsersController {
 
     const users = await User.query().paginate(page, limit)
 
-    return view.render('admin.users.index', {
+    return view.render('admin/users/index', {
       users,
     })
   }
 
   public async create({ view, auth, bouncer }: HttpContextContract) {
     await bouncer.with('UserPolicy').authorize('create', auth.user)
-    return view.render('admin.users.create')
+    return view.render('admin/users/create')
   }
 
   public async store({
@@ -47,7 +47,7 @@ export default class UsersController {
     }
     await user.save()
 
-    await new CreateUser(user).sendLater()
+    await new SignupMailer(user).sendLater()
 
     response.redirect().toRoute('admin_users.index')
   }
@@ -56,7 +56,7 @@ export default class UsersController {
     const user = await User.findOrFail(request.param('id'))
     await bouncer.with('UserPolicy').authorize('update', auth.user, user)
 
-    return view.render('admin.users.edit', {
+    return view.render('admin/users/edit', {
       user,
     })
   }
