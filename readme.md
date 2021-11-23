@@ -20,6 +20,8 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Webpack encore
 - [x] Hotwired turbo
 - [x] [Maildev](https://github.com/maildev/maildev)
+- [ ] Unit test
+- [ ] e2e test with [cypress](https://www.cypress.io/)
 
 
 
@@ -27,3 +29,12 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 Replace sqlite by other : link
 
 # Installation
+
+```bash
+npm install
+```
+## Developing
+
+```bash
+npm run dev
+```
