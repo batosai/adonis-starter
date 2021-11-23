@@ -34,6 +34,7 @@
     "@adonisjs/session": "^6.1.2",
     "@adonisjs/shield": "^7.0.6",
     "@adonisjs/view": "^6.1.1",
+    "@deskeen/markdown": "^5.1.3",
     "@hotwired/turbo": "^7.0.1",
     "@tailwindcss/forms": "^0.3.4",
     "alpinejs": "^3.4.2",
