@@ -1,68 +1,38 @@
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import User from 'App/Models/User'
+import { passwordRules, PASSWORD_MIN_LENGTH } from './Rules/Password'
+import { emailUniqueRules } from './Rules/Email'
 
 export enum Roles {
   ADMIN = 'admin',
   MEMBER = 'member',
 }
-
-export const PASSWORD_MIN_LENGTH = 8
-export const PASSWORD_MAX_LENGTH = 255
-
-export function passwordRules() {
-  const passwordRules = [
-    rules.minLength(PASSWORD_MIN_LENGTH),
-    rules.maxLength(PASSWORD_MAX_LENGTH),
-    rules.oneLowerCaseAtLeast(),
-    rules.oneNumericAtLeast(),
-    rules.oneUpperCaseAtLeast(),
-    rules.oneSpecialCharacterAtLeast(),
-    rules.confirmed(),
-  ]
-  return passwordRules
-}
-
-function emailRules(user) {
-  return [
-    rules.email({ sanitize: true }),
-    rules.unique(
-      user
-        ? {
-            table: 'users',
-            column: 'email',
-            whereNot: {
-              id: user.id,
-            },
-          }
-        : {
-            table: 'users',
-            column: 'email',
-          },
-    ),
-  ]
-}
 export default class UserValidator {
-  constructor(protected ctx: HttpContextContract) {}
+  constructor(protected ctx: HttpContextContract, protected user: User | void) {
+    const fields = {
+      username: schema.string(
+        { escape: true, trim: true, },
+        [ rules.minLength(2), rules.maxLength(255) ],
+      ),
+      email: schema.string({}, emailUniqueRules(user)),
+      password: user
+        ? schema.string.optional({ trim: true }, passwordRules())
+        : schema.string({ trim: true }, passwordRules()),
+      avatar: schema.file.optional({
+        extnames: ['jpg', 'png', 'jpeg', 'heic'],
+        size: '2mb',
+      })
+    }
 
-  public schema = schema.create({
-    username: schema.string(
-      {
-        escape: true,
-        trim: true,
-      },
-      [rules.minLength(2), rules.maxLength(255)],
-    ),
-    role: schema.enum(Object.values(Roles)),
-    email: schema.string({}, emailRules(this.ctx.user)),
-    password: this.ctx.user
-      ? schema.string.optional({ trim: true }, passwordRules())
-      : schema.string({ trim: true }, passwordRules()),
-    avatar: schema.file.optional({
-      extnames: ['jpg', 'png', 'jpeg', 'heic'],
-      size: '2mb',
-    }),
-  })
+    if (ctx.auth.user?.isAdmin && ctx.auth.user?.id !== user?.id) {
+      fields['role'] = schema.enum(Object.values(Roles))
+    }
 
+    this.schema = schema.create(fields)
+  }
+
+  public schema
   public messages = {
     'username.required': 'Enter your username',
     'username.minLength': 'Username too short',

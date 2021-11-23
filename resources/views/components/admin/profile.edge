@@ -6,12 +6,20 @@
   aria-label="Account"
   aria-haspopup="true"
 >
-  <img
-    class="object-cover w-8 h-8 rounded-full"
-    src="{{ auth.user.avatar?.url }}"
-    alt=""
-    aria-hidden="true"
-  />
+  @if(auth.user.avatar)
+    <img
+      class="object-cover w-8 h-8 rounded-full"
+      src="{{ auth.user.avatar?.url }}"
+      alt=""
+      aria-hidden="true"
+    />
+  @else
+    <div
+      class="p-3 w-10 text-orange-500 bg-orange-100 rounded-full dark:text-white dark:bg-gray-500"
+    >
+      @!svg.profile()
+    </div>
+  @end
 </button>
 
 <template x-if="isProfileMenuOpen">

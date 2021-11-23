@@ -3,6 +3,7 @@
 @form.control({
   name: 'username',
   placeholder:'jane doe',
+  require: true,
   errorKey: 'errors.username'
 })
   @!form.label({ title: 'Username', classes:"block mb-2" })
@@ -13,6 +14,7 @@
 @form.control({
   name: 'email',
   placeholder:'jane.doe@sample.com',
+  require: true,
   errorKey: 'errors.email'
 })
   @!form.label({ title: 'Email Address', classes:'block mt-4 mb-2' })
@@ -20,22 +22,26 @@
   @!form.error()
 @end
 
-@form.control({
-  name: 'role',
-  placeholder:'admin',
-  errorKey: 'errors.role'
-})
-  @!form.label({ title: 'Role', classes:'block mt-4 mb-2' })
-  @!form.select({ options: [
-    { text: 'Admin', value: 'admin' },
-    { text: 'Member', value: 'member' },
-  ], value: user ? user.role : '' })
-  @!form.error()
+@can('UserPolicy.role', user)
+  @form.control({
+    name: 'role',
+    placeholder:'admin',
+    require: true,
+    errorKey: 'errors.role'
+  })
+    @!form.label({ title: 'Role', classes:'block mt-4 mb-2' })
+    @!form.select({ options: [
+      { text: 'Admin', value: 'admin' },
+      { text: 'Member', value: 'member' },
+    ], value: user ? user.role : '' })
+    @!form.error()
+  @end
 @end
 
 @form.control({
   name: 'password',
   placeholder:'***************',
+  require: user ? false : true,
   errorKey: 'errors.password'
 })
   @!form.label({ title: 'Password', classes:'block mt-4 mb-2' })

@@ -18,7 +18,15 @@ export default class UserPolicy extends BasePolicy {
     return currentUser.isAdmin || currentUser.id === user.id
   }
 
-  public async delete(currentUser: User) {
-    return currentUser.isAdmin
+  public async delete(currentUser: User, user: User) {
+    return currentUser.isAdmin && currentUser.id !== user.id
+  }
+
+  public async lock(currentUser: User, user: User) {
+    return currentUser.isAdmin && currentUser.id !== user.id
+  }
+
+  public async role(currentUser: User, user: User) {
+    return currentUser.isAdmin && currentUser.id !== user?.id
   }
 }

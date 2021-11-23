@@ -10,6 +10,10 @@
     <p class="text-red-700 mt-1.5 text-sm font-medium">Invalide login or password</p>
   @end
 
+  @if (flashMessages.get('auth.blocked'))
+    <p class="text-red-700 mt-1.5 text-sm font-medium">{{ flashMessages.get('auth.blocked') }}</p>
+  @end
+
   <form action="{{ route('auth.signin') }}" method="POST">
     {{ csrfField() }}
 

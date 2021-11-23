@@ -3,7 +3,7 @@
     class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
     href="#"
   >
-    Windmill
+    Starter
   </a>
   <ul class="mt-6">
     <li class="relative px-6 py-3">
@@ -17,14 +17,7 @@
     </li>
   </ul>
   <ul>
-    <li class="relative px-6 py-3">
-      @component('components/admin/sidebar/link', {
-        text: 'Forms',
-        href: '../index.html'
-      })
-        @!svg.users()
-      @end
-    </li>
+    @can('UserPolicy.viewList')
     <li class="relative px-6 py-3">
       @component('components/admin/sidebar/link', {
         isActive: request.matchesRoute(['admin_users.index', 'admin_users.create', 'admin_users.store', 'admin_users.edit', 'admin_users.update']) ,
@@ -34,52 +27,7 @@
         @!svg.users()
       @end
     </li>
-    <li class="relative px-6 py-3">
-      <button
-        class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-        @click="toggleBooksMenu"
-        aria-haspopup="true"
-      >
-        <span class="inline-flex items-center">
-          @!svg.settings()
-          <span class="ml-4">Books</span>
-        </span>
-        @!svg.arrowDown()
-      </button>
-
-      <template x-if="isBooksMenuOpen">
-        <ul
-          x-transition:enter="transition-all ease-in-out duration-300"
-          x-transition:enter-start="opacity-25 max-h-0"
-          x-transition:enter-end="opacity-100 max-h-xl"
-          x-transition:leave="transition-all ease-in-out duration-300"
-          x-transition:leave-start="opacity-100 max-h-xl"
-          x-transition:leave-end="opacity-0 max-h-0"
-          class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-          aria-label="submenu"
-        >
-          <li
-            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          >
-            <a class="w-full" href="./login.html">Libaries</a>
-          </li>
-          <li
-            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          >
-            <a class="w-full" href="./create-account.html">
-              Collections
-            </a>
-          </li>
-          <li
-            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          >
-            <a class="w-full" href="./forgot-password.html">
-              Books
-            </a>
-          </li>
-        </ul>
-      </template>
-    </li>
+    @end
     <li class="relative px-6 py-3">
       <button
         class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -107,31 +55,21 @@
           <li
             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           >
-            <a class="w-full" href="./login.html">Login</a>
+            <a class="w-full" href="#">item 1</a>
           </li>
           <li
             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           >
-            <a class="w-full" href="./create-account.html">
-              Create account
+            <a class="w-full" href="#">
+              item 2
             </a>
           </li>
           <li
             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           >
-            <a class="w-full" href="./forgot-password.html">
-              Forgot password
+            <a class="w-full" href="#">
+              item 3
             </a>
-          </li>
-          <li
-            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          >
-            <a class="w-full" href="./404.html">404</a>
-          </li>
-          <li
-            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          >
-            <a class="w-full" href="./blank.html">Blank</a>
           </li>
         </ul>
       </template>

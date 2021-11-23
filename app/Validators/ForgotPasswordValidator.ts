@@ -1,21 +1,11 @@
-import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import { schema } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-
-export function emailRules() {
-  return [
-    rules.email({ sanitize: true }),
-    rules.exists({
-      table: 'users',
-      column: 'email',
-    }),
-  ]
-}
-
+import { emailExistsRules } from './Rules/Email'
 export default class ForgotPasswordValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    email: schema.string({}, emailRules()),
+    email: schema.string({}, emailExistsRules()),
   })
 
   public messages = {

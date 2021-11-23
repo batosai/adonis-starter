@@ -10,6 +10,9 @@
 >
   @if(title)
     {{ title }}
+    @if($context.require)
+      *
+    @end
   @else
     {{{ await $slots.main() }}}
   @end

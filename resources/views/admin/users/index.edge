@@ -73,6 +73,12 @@
                         class="absolute inset-0 rounded-full shadow-inner"
                         aria-hidden="true"
                       ></div>
+                    @else
+                      <div
+                        class="p-3 w-10 text-orange-500 bg-orange-100 rounded-full dark:text-white dark:bg-gray-500"
+                      >
+                        @!svg.profile()
+                      </div>
                     @end
                   </div>
                   <div>
@@ -101,7 +107,7 @@
                 <span
                   class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                 >
-                  Active
+                  {{ user.blocked ? 'Disabled' : 'Enabled' }}
                 </span>
                 @end
               </td>
@@ -116,7 +122,7 @@
                   >
                     @!svg.edit()
                   </a>
-                  @if(auth.user.id !== user.id)
+                  @can('UserPolicy.delete', user)
                     <form @submit.prevent="elmt = $el; openModal()" action="{{route('admin_users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
                       {{ csrfField() }}
                       <button

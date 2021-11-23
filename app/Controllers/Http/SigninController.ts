@@ -15,13 +15,18 @@ export default class SigninController {
   /**
    * Handle login form submissions
    */
-  public async store({ request, response, auth }: HttpContextContract) {
+  public async store({ request, response, auth, session }: HttpContextContract) {
 
     await auth.attempt(request.input('email'), request.input('password'), request.input('remember_me'))
 
     auth.user.last_login_at = DateTime.local()
-    console.log(auth.user)
     await auth.user.save()
+
+    if (auth.user?.blocked) {
+      session.flash('auth.blocked', 'Your account is blocked.')
+      session.clear();
+      return response.redirect('/signin')
+    }
 
     /**
      * Redirect to the home page

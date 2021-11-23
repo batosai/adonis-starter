@@ -19,5 +19,21 @@
         @include('admin/users/_form')
       </form>
     </div>
+
+    @can('UserPolicy.lock', user)
+      @!title({ text: 'Lock a user' })
+
+      <div
+        class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+      >
+        <form action="{{ route('admin_users.update', { id: user.id }, {
+          qs: {
+            _method: 'PATCH'
+          }
+        }) }}" method="POST" enctype="multipart/form-data">
+          @include('admin/users/_form-lock')
+        </form>
+      </div>
+    @end
   </div>
 @end

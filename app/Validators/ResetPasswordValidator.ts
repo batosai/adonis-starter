@@ -1,13 +1,13 @@
 import { schema } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { passwordRules, PASSWORD_MIN_LENGTH } from './UserValidator'
-import { emailRules } from './ForgotPasswordValidator'
+import { passwordRules, PASSWORD_MIN_LENGTH } from './Rules/Password'
+import { emailExistsRules } from './Rules/Email'
 
 export default class ResetPasswordValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    email: schema.string({}, emailRules()),
+    email: schema.string({}, emailExistsRules()),
     password: schema.string({ trim: true }, passwordRules()),
   })
 
