@@ -32,6 +32,7 @@ Replace sqlite by other : link
 
 ```bash
 npm install
+node ace generate:key
 ```
 ## Developing
 
