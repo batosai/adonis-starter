@@ -1,0 +1,40 @@
+<div
+  class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+>
+  <span class="col-span-5"></span>
+  <!-- Pagination -->
+  <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+    <nav aria-label="Table navigation">
+      <ul class="inline-flex items-center">
+        @if(object.total > 1 && object.currentPage > 1)
+        <li>
+          <a href="{{ (object.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
+            @!svg.prev()
+          </a>
+        </li>
+        @end
+
+        @each(anchor in object.getUrlsForRange(1, object.lastPage))
+          @set('klass', 'px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple')
+          @if(anchor.page === object.currentPage)
+            @set('klass', 'px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple')
+          @end
+
+          <li>
+            <a href="{{ anchor.url }}" class="{{ klass }}">
+              {{ anchor.page }}
+            </a>
+          </li>
+        @endeach
+
+        @if(object.total > 1 && object.currentPage < object.lastPage)
+        <li>
+          <a href="{{ (object.getUrlsForRange(object.lastPage, object.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
+            @!svg.next()
+          </a>
+        </li>
+        @end
+      </ul>
+    </nav>
+  </span>
+</div>
