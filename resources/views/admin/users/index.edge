@@ -10,27 +10,12 @@
     <!-- Cards -->
     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
       <!-- Card -->
-      <div
-        class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-      >
-        <div
-          class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
-        >
-          @!svg.users()
-        </div>
-        <div>
-          <p
-            class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-          >
-            Total users
-          </p>
-          <p
-            class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-          >
-            {{ users.total }}
-          </p>
-        </div>
-      </div>
+      @admin.statistic.card({
+        title: 'Total users',
+        text: users.total,
+      })
+        @!svg.users()
+      @end
     </div>
 
     <div>
@@ -140,49 +125,7 @@
           </tbody>
         </table>
       </div>
-      <div
-        class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
-      >
-        <span class="flex items-center col-span-3">
-          Showing 21-30 of 100
-        </span>
-        <span class="col-span-2"></span>
-        <!-- Pagination -->
-        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-          <nav aria-label="Table navigation">
-            <ul class="inline-flex items-center">
-              @if(users.total > 1 && users.currentPage > 1)
-              <li>
-                <a href="{{ (users.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                  @!svg.prev()
-                </a>
-              </li>
-              @end
-
-              @each(anchor in users.getUrlsForRange(1, users.lastPage))
-                @set('klass', 'px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple')
-                @if(anchor.page === users.currentPage)
-                  @set('klass', 'px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple')
-                @end
-
-                <li>
-                  <a href="{{ anchor.url }}" class="{{ klass }}">
-                    {{ anchor.page }}
-                  </a>
-                </li>
-              @endeach
-
-              @if(users.total > 1 && users.currentPage < users.lastPage)
-              <li>
-                <a href="{{ (users.getUrlsForRange(users.lastPage, users.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                  @!svg.next()
-                </a>
-              </li>
-              @end
-            </ul>
-          </nav>
-        </span>
-      </div>
+      @!admin.pagination({ object: users })
     </div>
   </div>
 
