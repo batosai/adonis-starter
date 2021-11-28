@@ -2,6 +2,11 @@ import '../css/app.css'
 
 import '@hotwired/turbo'
 import Alpine from 'alpinejs'
+import Editor from './scripts/editor'
+
+document.addEventListener("turbo:load", () => {
+  new Editor()
+})
 
 // import './scripts/charts-bars'
 import './scripts/charts-lines'
