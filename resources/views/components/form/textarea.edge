@@ -1,0 +1,24 @@
+{{--
+  The default set of styling classes for the input. One can pass
+  the class attribute to define their own
+--}}
+@set('classes', 'block rounded w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray')
+
+@if (flashMessages.has('errors.' + $context.name))
+  @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : '')
+@else
+  @set($props, 'value', flashMessages.get($context.name) ?
+    flashMessages.get($context.name) :
+    ($props.value ? $props.value : ''))
+@end
+
+<textarea {{
+  $props.serializeExcept(['value'], {
+    class: classes,
+    placeholder: $context.placeholder ? $context.placeholder : '',
+    id: $context.name,
+    name: $context.name
+  }, false)
+}}>
+  {{ $props.value }}
+</textarea>
