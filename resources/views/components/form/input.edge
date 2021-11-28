@@ -20,7 +20,7 @@
 <input {{
   $props.serializeExcept(['value'], {
     class: classes,
-    placeholder: $context.placeholder,
+    placeholder: $context.placeholder ? $context.placeholder : '',
     id: $context.name,
     name: $context.name
   }, false)
