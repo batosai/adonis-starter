@@ -7,7 +7,7 @@
       },
       "commandPath": "./commands/Maildev",
       "commandName": "maildev",
-      "description": "",
+      "description": "Start the maildev",
       "args": [],
       "aliases": [],
       "flags": []

@@ -36,7 +36,8 @@
     "@adonisjs/auth",
     "@adonisjs/attachment-lite",
     "@adonisjs/bouncer",
-    "@adonisjs/mail"
+    "@adonisjs/mail",
+    "@adonisjs/lucid-slugify"
   ],
   "metaFiles": [
     {
