@@ -1,12 +1,11 @@
 @layout('layouts/admin')
 
-@set('title', 'Edit a user')
-@set('description', 'Edit a user')
+@set('title', t('admin.user.title.edit'))
 
 @section('body')
 
   <div class="container px-6 mx-auto">
-    @!title({ text: 'Edit a user' })
+    @!title({ text: t('admin.user.title.edit') })
 
     <div
       class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
@@ -21,7 +20,7 @@
     </div>
 
     @can('UserPolicy.lock', user)
-      @!title({ text: 'Lock a user' })
+      @!title({ text: t('admin.user.title.lock') })
 
       <div
         class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"

@@ -6,7 +6,7 @@
   require: true,
   errorKey: 'errors.username'
 })
-  @!form.label({ title: 'Username', classes:"block mb-2" })
+  @!form.label({ title: t('form.user.username'), classes:"block mb-2" })
   @!form.input({ type: 'text', value: user ? user.username : '' })
   @!form.error()
 @end
@@ -17,7 +17,7 @@
   require: true,
   errorKey: 'errors.email'
 })
-  @!form.label({ title: 'Email Address', classes:'block mt-4 mb-2' })
+  @!form.label({ title: t('form.shared.email'), classes:'block mt-4 mb-2' })
   @!form.input({ type: 'email', value: user ? user.email : '' })
   @!form.error()
 @end
@@ -29,7 +29,7 @@
     require: true,
     errorKey: 'errors.role'
   })
-    @!form.label({ title: 'Role', classes:'block mt-4 mb-2' })
+    @!form.label({ title: t('form.user.role'), classes:'block mt-4 mb-2' })
     @!form.select({ options: [
       { text: 'Admin', value: 'admin' },
       { text: 'Member', value: 'member' },
@@ -44,7 +44,7 @@
   require: user ? false : true,
   errorKey: 'errors.password'
 })
-  @!form.label({ title: 'Password', classes:'block mt-4 mb-2' })
+  @!form.label({ title: t('form.shared.password'), classes:'block mt-4 mb-2' })
   @!form.input({ type: 'password' })
   @!form.error()
 @end
@@ -54,7 +54,7 @@
   placeholder:'***************',
   errorKey: 'errors.password_confirmation'
 })
-  @!form.label({ title: 'Password confirmation', classes:'block mt-4 mb-2' })
+  @!form.label({ title: t('form.shared.password_confirmation'), classes:'block mt-4 mb-2' })
   @!form.input({ type: 'password' })
   @!form.error()
 @end
@@ -78,4 +78,4 @@
   />
 @end
 
-@!form.submit({ text: user ? 'Update' : 'Create' })
+@!form.submit({ text: user ? t('form.shared.update') : t('form.shared.create') })

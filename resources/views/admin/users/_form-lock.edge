@@ -6,13 +6,13 @@
 })
   @form.label({ classes:"block mb-2" })
     @!form.radio({ type: 'radio', value: 'true', checked: user?.blocked ? true : false })
-    Yes
+    {{ t('form.user.yes') }}
   @end
   @form.label({ classes:"block mb-2" })
     @!form.radio({ type: 'radio', value: 'false', checked: user?.blocked ? false : true })
-    No
+    {{ t('form.user.no') }}
   @end
   @!form.error()
 @end
 
-@!form.submit({ text: 'Update' })
+@!form.submit({ text: t('form.shared.update') })

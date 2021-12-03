@@ -1,11 +1,10 @@
 @layout('layouts/admin')
 
-@set('title', 'Create a user')
-@set('description', 'Create a user')
+@set('title', t('admin.user.title.create'))
 
 @section('body')
   <div class="container px-6 mx-auto">
-    @!title({ text: 'Create a user' })
+    @!title({ text: t('admin.user.title.create') })
 
     <div
       class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
