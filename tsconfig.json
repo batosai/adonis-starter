@@ -36,7 +36,8 @@
       "@adonisjs/attachment-lite",
       "@adonisjs/bouncer",
       "@adonisjs/mail",
-      "@adonisjs/lucid-slugify"
+      "@adonisjs/lucid-slugify",
+      "@adonisjs/i18n"
     ]
   }
 }

@@ -37,7 +37,8 @@
     "@adonisjs/attachment-lite",
     "@adonisjs/bouncer",
     "@adonisjs/mail",
-    "@adonisjs/lucid-slugify"
+    "@adonisjs/lucid-slugify",
+    "@adonisjs/i18n"
   ],
   "metaFiles": [
     {
@@ -47,7 +48,8 @@
     {
       "pattern": "resources/views/**/*.edge",
       "reloadServer": false
-    }
+    },
+    "resources/lang/**/*.(json|yaml)"
   ],
   "aceProviders": [
     "@adonisjs/repl"
