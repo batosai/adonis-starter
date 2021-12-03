@@ -12,20 +12,12 @@ export default class ResetPasswordValidator {
   })
 
   public messages = {
-    'password.required': 'Password field is required',
-    'password.minLength':
-      'Password must be at least ' + PASSWORD_MIN_LENGTH + ' characters long',
-    'password.oneLowerCaseAtLeast':
-      'Password must contain at least one lowercase letter',
-    'password.oneUpperCaseAtLeast':
-      'Password must contain at least one uppercase letter',
-    'password.oneNumericAtLeast': 'Password must contain at least one digit',
-    'password.oneSpecialCharacterAtLeast':
-      'Password must contain at least one special character',
-    'password_confirmation.required': 'Password confirmation is required',
-    'password_confirmation.confirmed':
-      'Password and confirm password does not match.',
-    'password_confirmation.minLength':
-      'Password must be at least ' + PASSWORD_MIN_LENGTH + ' characters long',
+    ...this.ctx.i18n.validatorMessages('validator.shared'),
+    'password.minLength': this.ctx.i18n.formatMessage('validator.shared.password.minLength', {
+      password_min_length: PASSWORD_MIN_LENGTH
+    }),
+    'password_confirmation.minLength': this.ctx.i18n.formatMessage('validator.shared.password_confirmation.minLength', {
+      password_min_length: PASSWORD_MIN_LENGTH
+    }),
   }
 }

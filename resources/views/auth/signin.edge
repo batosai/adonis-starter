@@ -1,13 +1,12 @@
 @layout('layouts/login')
 
-@set('title', 'Log In')
-@set('description', 'Login form ')
+@set('title', t('auth.page.signin.title'))
 
 @section('body')
-  @!title({ text: 'Login' })
+  @!title({ text: t('auth.page.signin.title') })
 
   @if (flashMessages.get('auth.errors'))
-    <p class="text-red-700 mt-1.5 text-sm font-medium">Invalide login or password</p>
+    <p class="text-red-700 mt-1.5 text-sm font-medium">{{ t('auth.E_INVALID_AUTH_UID') }}</p>
   @end
 
   @if (flashMessages.get('auth.blocked'))
@@ -22,7 +21,7 @@
       placeholder:'jane.doe@sample.com',
       errorKey: 'auth.errors.uid'
     })
-      @!form.label({ title: 'Email', classes:'block mb-2' })
+      @!form.label({ title: t('form.shared.email'), classes:'block mb-2' })
       @!form.input({ type: 'email' })
     @end
 
@@ -31,7 +30,7 @@
       placeholder:'***************',
       errorKey: 'auth.errors.password'
     })
-      @!form.label({ title: 'Password', classes:'block mt-4 mb-2' })
+      @!form.label({ title: t('form.shared.password'), classes:'block mt-4 mb-2' })
       @!form.input({ type: 'password' })
     @end
 
@@ -40,19 +39,19 @@
     })
       @form.label({ classes:'block mt-4 mb-2' })
         @!form.checkbox({ value: true })
-        Remember me
+        {{ t('form.signin.remember_me') }}
       @end
     @end
 
-    @!form.submit({ text: 'Log In' })
+    @!form.submit({ text: t('form.signin.login') })
   </form>
 
   <p class="mt-4">
     <a
-      class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+      class="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
       href="{{ route('auth.password.forgot') }}"
     >
-      Forgot your password?
+      {{ t('auth.page.signin.forgot') }}
     </a>
   </p>
 @end

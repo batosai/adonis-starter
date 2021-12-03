@@ -7,9 +7,4 @@ export default class ForgotPasswordValidator {
   public schema = schema.create({
     email: schema.string({}, emailExistsRules()),
   })
-
-  public messages = {
-    'email.required': 'Email field is required',
-    'email.unique': 'An account with this email already exists',
-  }
 }
