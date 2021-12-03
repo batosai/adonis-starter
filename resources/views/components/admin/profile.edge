@@ -1,5 +1,5 @@
 <button
-  class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+  class="align-middle rounded-full focus:shadow-outline-indigo focus:outline-none"
   @click="toggleProfileMenu"
   @click.away="closeProfileMenu"
   @keydown.escape="closeProfileMenu"
@@ -38,7 +38,7 @@
         href="{{route('admin_users.edit', {id: auth.user.id})}}"
       >
         @!svg.profile()
-        <span>Profile</span>
+        <span>{{ t('admin.shared.profile') }}</span>
       </a>
     </li>
     <li class="flex">
@@ -47,7 +47,7 @@
         href="#"
       >
         @!svg.settings()
-        <span>Settings</span>
+        <span>{{ t('admin.shared.settings') }}</span>
       </a>
     </li>
     <li class="flex">
@@ -60,7 +60,7 @@
           @click.prevent="(event) => event.target.closest('form').submit()"
         >
           @!svg.logout()
-          <span>Log out</span>
+          <span>{{ t('admin.shared.logout') }}</span>
         </a>
       </form>
     </li>

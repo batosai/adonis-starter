@@ -1,15 +1,15 @@
 <div class="py-4 text-gray-500 dark:text-gray-400">
   <a
     class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-    href="#"
+    href="{{ route('admin_dashboard') }}"
   >
-    Starter
+  {{ t('app.title') }}
   </a>
   <ul class="mt-6">
     <li class="relative px-6 py-3">
       @component('components/admin/sidebar/link', {
         isActive: request.matchesRoute('admin_dashboard'),
-        text: 'Dashboard',
+        text: t('admin.shared.dashboard'),
         href: route('admin_dashboard')
       })
         @!svg.dashboard()
@@ -21,7 +21,7 @@
     <li class="relative px-6 py-3">
       @component('components/admin/sidebar/link', {
         isActive: request.matchesRoute(['admin_users.index', 'admin_users.create', 'admin_users.store', 'admin_users.edit', 'admin_users.update']) ,
-        text: 'Users',
+        text: t('admin.shared.users'),
         href: route('admin_users.index')
       })
         @!svg.users()
@@ -36,7 +36,7 @@
       >
         <span class="inline-flex items-center">
           @!svg.settings()
-          <span class="ml-4">Settings</span>
+          <span class="ml-4">{{ t('admin.shared.settings') }}</span>
         </span>
         @!svg.arrowDown()
       </button>
