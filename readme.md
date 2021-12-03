@@ -11,7 +11,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Forgot password
 - [x] Email create password
 - [x] Roles and permissions with AdonisJS bouncers
-- [ ] i18n
+- [x] i18n
 - [ ] Last login at
 - [x] Form component
 - [x] Admin UI [windmill](https://github.com/estevanmaito/windmill-dashboard)
