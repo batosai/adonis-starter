@@ -1,0 +1,30 @@
+{
+  "shared": {
+    "email": "Email",
+    "password": "Mot de passe",
+    "state": "Status",
+    "password_confirmation": "Mot de passe de confirmation",
+    "send": "Envoyer",
+    "save": "Enregistrer",
+    "create": "Enregistrer",
+    "update": "Mettre à jour"
+  },
+  "signin": {
+    "remember_me": "Se souvenir de moi",
+    "login": "Connexion"
+  },
+  "user": {
+    "username": "Speudo",
+    "role": "Rôle",
+    "avatar": "Avatar",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "page": {
+    "title": "Titre",
+    "content": "Contenu",
+    "slug": "Slug",
+    "seo_title": "SEO Titre",
+    "seo_description": "SEO Description"
+  }
+}

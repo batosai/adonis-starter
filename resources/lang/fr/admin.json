@@ -1,0 +1,43 @@
+{
+  "shared": {
+    "search": "Recherche",
+    "profile": "Profil",
+    "settings": "Configurations",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "pages": "Pages",
+    "users": "Utilisateurs",
+
+    "title": "Titre",
+    "user": "Utilisateur",
+    "status": "Status",
+    "role": "Rôle",
+    "date": "Date",
+    "actions": "Actions",
+
+    "enabled": "Actif",
+    "disabled": "Désactivé",
+
+    "draft": "Brouillon",
+    "publish": "Publié"
+  },
+  "user": {
+    "title": {
+      "list": "Liste des utilisateurs",
+      "create": "Créer un utilisateur",
+      "edit": "Editer un utilisateur",
+      "lock": "Bloquer l'utilisateur"
+    },
+    "new": "Créer un utilisateur",
+    "total": "Nombre d'utilisateurs"
+  },
+  "page": {
+    "title": {
+      "list": "Liste des pages",
+      "create": "Créer une page",
+      "edit": "Editer une page"
+    },
+    "new": "Créer une page",
+    "total": "Nombre de pages"
+  }
+}

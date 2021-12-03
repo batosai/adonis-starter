@@ -1,0 +1,30 @@
+{
+  "shared": {
+    "email": "Email",
+    "password": "Password",
+    "state": "Status",
+    "password_confirmation": "Confirmation Password",
+    "send": "Send",
+    "save": "Save",
+    "create": "Save",
+    "update": "Update"
+  },
+  "signin": {
+    "remember_me": "Remember me",
+    "login": "Log in"
+  },
+  "user": {
+    "username": "Username",
+    "role": "Role",
+    "avatar": "Avatar",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "page": {
+    "title": "Title",
+    "content": "Content",
+    "slug": "Slug",
+    "seo_title": "SEO Title",
+    "seo_description": "SEO Description"
+  }
+}

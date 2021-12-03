@@ -1,0 +1,43 @@
+{
+  "shared": {
+    "search": "Search",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out",
+    "dashboard": "Dashboard",
+    "pages": "Pages",
+    "users": "Users",
+
+    "title": "Title",
+    "user": "User",
+    "status": "Status",
+    "role": "Role",
+    "date": "Date",
+    "actions": "Actions",
+
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+
+    "draft": "Draft",
+    "publish": "Publish"
+  },
+  "user": {
+    "title": {
+      "list": "List of users",
+      "create": "Create user",
+      "edit": "Edit user",
+      "lock": "Lock user"
+    },
+    "new": "Create a user",
+    "total": "Number of users"
+  },
+  "page": {
+    "title": {
+      "list": "List of pages",
+      "create": "Create a page",
+      "edit": "Edit a page"
+    },
+    "new": "Create a page",
+    "total": "Number of pages"
+  }
+}

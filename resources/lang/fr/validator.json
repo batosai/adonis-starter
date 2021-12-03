@@ -1,0 +1,20 @@
+{
+  "shared": {
+    "username.required": "Entrer votre pseudo",
+    "email.required": "L'email est requise",
+    "email.unique": "Un compte avec cette adresse e-mail existe déjà",
+    "password.required": "Le mot de passe est requise",
+    "password.minLength": "Le mot de passe doit comporter au moins { password_min_length } caractères",
+    "password.oneLowerCaseAtLeast": "Le mot de passe doit contenir au moins une lettre minuscule",
+    "password.oneUpperCaseAtLeast": "Le mot de passe doit contenir au moins une lettre majuscule",
+    "password.oneNumericAtLeast": "Le mot de passe doit contenir au moins un chiffre",
+    "password.oneSpecialCharacterAtLeast": "Le mot de passe doit contenir au moins un caractère spécial",
+    "password_confirmation.required": "La confirmation du mot de passe est requise",
+    "password_confirmation.confirmed": "Le mot de passe et le mot de passe de confirmation ne correspondent pas.",
+    "password_confirmation.minLength": "Le mot de passe doit comporter au moins { password_min_length } caractères",
+
+    "title.required": "Entrer un titre"
+  }
+}
+
+
