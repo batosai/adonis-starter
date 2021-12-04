@@ -24,7 +24,7 @@ export default class ForgotPasswordMailer extends BaseMailer {
       user: this.user,
       url
     })
-    .textView('emails/auth/forgot-password', {
+    .textView('emails/auth/forgot-password-plain', {
       user: this.user,
       url
     })

@@ -24,7 +24,7 @@ export default class SignupMailer extends BaseMailer {
         user: this.user,
         url,
       })
-      .textView('emails/auth/signup', {
+      .textView('emails/auth/signup-plain', {
         user: this.user,
         url,
       })
