@@ -8,16 +8,16 @@
       <ul class="inline-flex items-center">
         @if(object.total > 1 && object.currentPage > 1)
         <li>
-          <a href="{{ (object.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
+          <a href="{{ (object.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-indigo" aria-label="Previous">
             @!svg.prev()
           </a>
         </li>
         @end
 
         @each(anchor in object.getUrlsForRange(1, object.lastPage))
-          @set('klass', 'px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple')
+          @set('klass', 'px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-indigo')
           @if(anchor.page === object.currentPage)
-            @set('klass', 'px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple')
+            @set('klass', 'px-3 py-1 text-white transition-colors duration-150 bg-indigo-600 border border-r-0 border-indigo-600 rounded-md focus:outline-none focus:shadow-outline-indigo')
           @end
 
           <li>
@@ -29,7 +29,7 @@
 
         @if(object.total > 1 && object.currentPage < object.lastPage)
         <li>
-          <a href="{{ (object.getUrlsForRange(object.lastPage, object.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
+          <a href="{{ (object.getUrlsForRange(object.lastPage, object.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-indigo" aria-label="Next">
             @!svg.next()
           </a>
         </li>
