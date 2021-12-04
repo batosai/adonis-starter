@@ -8,3 +8,26 @@ input[type='file']::file-selector-button {
   margin-inline-start: -1rem;
   margin-inline-end: 1rem;
 }
+
+/* EDITOR QUILL */
+
+.theme-dark .editor-container path,
+.theme-dark .editor-container line,
+.theme-dark .editor-container polygon,
+.theme-dark .editor-container rect {
+  stroke: rgba(158, 158, 158, var(--tw-text-opacity)) !important;
+}
+
+.editor-container .ql-picker-label{
+  @apply text-gray-700 dark:text-gray-400
+}
+
+.editor-container .ql-toolbar.ql-snow, .editor-container .ql-container.ql-snow{
+  @apply border-gray-300 dark:border-gray-600 rounded-t
+}
+.editor-container .ql-toolbar.ql-snow{
+  @apply rounded-t
+}
+.editor-container .ql-container.ql-snow{
+  @apply rounded-b rounded-t-none
+}
