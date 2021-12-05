@@ -1,0 +1,22 @@
+{
+  "signin": {
+    "subject": "Create your password",
+    "plain": "Welcome { username }\n\nClick this link to create your password.\n{ url }",
+    "html": {
+      "welcome": "Welcome { username },",
+      "description": "Please create your password by clicking on the button:",
+      "signature": "Thank you.",
+      "button": "Create new password"
+    }
+  },
+  "forgot": {
+    "subject": "Password change request ",
+    "plain": "Welcome { username }\n\nClick this link to change your password.\n{ url }",
+    "html": {
+      "welcome": "Welcome { username },",
+      "description": "Please create new password by clicking on the button:",
+      "signature": "Thank you.",
+      "button": "Create new password"
+    }
+  }
+}

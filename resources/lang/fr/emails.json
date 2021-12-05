@@ -1,0 +1,22 @@
+{
+  "signin": {
+    "subject": "Création de votre mot de passe",
+    "plain": "Bienvenue { username }\n\nCliquez sur ce lien pour créer votre mot de passe .\n{ url }",
+    "html": {
+      "welcome": "Bienvenue { username },",
+      "description": "Veuillez créer votre mot de passe en cliquant sur le bouton  :",
+      "signature": "Merci.",
+      "button": "Créer un mot de passe"
+    }
+  },
+  "forgot": {
+    "subject": "Demande de changement de mot de passe",
+    "plain": "Bonjour { username }\n\nCliquez sur ce lien pour changer votre mot de passe.\n{ url }",
+    "html": {
+      "welcome": "Bonjour { username },",
+      "description": "Veuillez créer un nouveau mot de passe en cliquant sur le bouton :",
+      "signature": "Merci.",
+      "button": "Créer un nouveau mot de passe"
+    }
+  }
+}

@@ -1,4 +1,1 @@
-Welcome {{ user.username }}
-
-Click this link to create your password.
-{{ url }}
+{{ t('emails.signin.plain', { username: user.username, url }) }}
