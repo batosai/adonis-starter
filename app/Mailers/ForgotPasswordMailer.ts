@@ -19,16 +19,16 @@ export default class ForgotPasswordMailer extends BaseMailer {
     })
 
     message
-    .from(Env.get('FROM_EMAIL'), 'Adonis')
-    .to(this.user.email, this.user.username)
-    .subject(I18n.locale(I18n.defaultLocale).formatMessage('emails.forgot.subject'))
-    .htmlView('emails/auth/forgot-password', {
-      user: this.user,
-      url
-    })
-    .textView('emails/auth/forgot-password-plain', {
-      user: this.user,
-      url
-    })
+      .from(Env.get('FROM_EMAIL'), 'Adonis')
+      .to(this.user.email, this.user.username)
+      .subject(I18n.locale(I18n.defaultLocale).formatMessage('emails.forgot.subject'))
+      .htmlView('emails/auth/forgot-password', {
+        user: this.user,
+        url
+      })
+      .textView('emails/auth/forgot-password-plain', {
+        user: this.user,
+        url
+      })
   }
 }
