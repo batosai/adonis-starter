@@ -10,10 +10,15 @@
   @if(isActive)~
     text-gray-800 dark:text-gray-100
   @endif~
-
   "
   href="{{ href }}"
 >
   {{{ await $slots.main() }}}
-  <span class="ml-4">{{ text }}</span>
+  @if($slots.main())~
+  <span class="ml-4">
+  @endif~
+    {{ text }}
+  @if($slots.main())~
+  </span>
+  @endif~
 </a>
