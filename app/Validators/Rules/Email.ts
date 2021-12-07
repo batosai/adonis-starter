@@ -2,7 +2,7 @@ import { rules } from '@ioc:Adonis/Core/Validator'
 
 export function emailUniqueRules(user) {
   return [
-    rules.email({ sanitize: true }),
+    rules.email(),
     rules.unique(
       user
         ? {
@@ -22,7 +22,7 @@ export function emailUniqueRules(user) {
 
 export function emailExistsRules() {
   return [
-    rules.email({ sanitize: true }),
+    rules.email(),
     rules.exists({
       table: 'users',
       column: 'email',
