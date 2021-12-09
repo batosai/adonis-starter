@@ -15,7 +15,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [ ] Last login at
 - [x] Form component
 - [x] Admin UI [windmill](https://github.com/estevanmaito/windmill-dashboard)
-- [x] Tailwind 2.0
+- [x] Tailwind 3.0
 - [x] Alpinejs
 - [x] Webpack encore
 - [x] Hotwired turbo
