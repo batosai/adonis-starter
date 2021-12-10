@@ -5,6 +5,7 @@ const Color = require('color')
 module.exports = {
   mode: 'jit',
   content: ['./resources/views/**/*.edge', './resources/views/*.edge'],
+  darkMode: 'class',
   theme: {
     themeVariants: ['dark'],
     customForms: theme => ({

@@ -11,10 +11,10 @@ input[type='file']::file-selector-button {
 
 /* EDITOR QUILL */
 
-.theme-dark .editor-container path,
-.theme-dark .editor-container line,
-.theme-dark .editor-container polygon,
-.theme-dark .editor-container rect {
+.dark .editor-container path,
+.dark .editor-container line,
+.dark .editor-container polygon,
+.dark .editor-container rect {
   stroke: rgba(158, 158, 158, var(--tw-text-opacity)) !important;
 }
 
