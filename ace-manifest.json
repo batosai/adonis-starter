@@ -1,5 +1,17 @@
 {
   "commands": {
+    "db:reset": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/DbReset",
+      "commandName": "db:reset",
+      "description": "Drop databe and execute seed",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "maildev": {
       "settings": {
         "loadApp": false,
@@ -95,7 +107,9 @@
       ]
     },
     "make:model": {
-      "settings": {},
+      "settings": {
+        "loadApp": true
+      },
       "commandPath": "@adonisjs/lucid/build/commands/MakeModel",
       "commandName": "make:model",
       "description": "Make a new Lucid model",
