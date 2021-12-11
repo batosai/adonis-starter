@@ -8,6 +8,9 @@
   @set('classes', 'w-5 h-5 mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-indigo-400 focus:outline-none focus:shadow-outline-indigo dark:text-gray-300 dark:focus:shadow-outline-gray')
 @end
 
+@if(type === 'file')
+  @set('classes', classes + ' file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-700 file:text-white hover:file:bg-gray-600')
+@end
 
 @if (flashMessages.has('errors.' + $context.name))
   @set($props, 'value', flashMessages.get($context.name) ? flashMessages.get($context.name) : '')
