@@ -24,6 +24,26 @@
       "aliases": [],
       "flags": []
     },
+    "make:scaffold": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/MakeScaffold",
+      "commandName": "make:scaffold",
+      "description": "Make a new HTTP controller / Lucid model / view template",
+      "args": [
+        {
+          "type": "string",
+          "propertyName": "name",
+          "name": "name",
+          "required": true,
+          "description": "Name of the controller and model class"
+        }
+      ],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",
