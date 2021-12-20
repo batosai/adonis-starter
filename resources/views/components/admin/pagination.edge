@@ -8,7 +8,7 @@
       <ul class="inline-flex items-center">
         @if(object.total > 1 && object.currentPage > 1)
         <li>
-          <a href="{{ (object.getUrlsForRange(1, 1)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-indigo" aria-label="Previous">
+          <a href="{{ object.getPreviousPageUrl() }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-indigo" aria-label="Previous">
             @!svg.prev()
           </a>
         </li>
@@ -29,7 +29,7 @@
 
         @if(object.total > 1 && object.currentPage < object.lastPage)
         <li>
-          <a href="{{ (object.getUrlsForRange(object.lastPage, object.lastPage)).shift().url }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-indigo" aria-label="Next">
+          <a href="{{ object.getNextPageUrl() }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-indigo" aria-label="Next">
             @!svg.next()
           </a>
         </li>

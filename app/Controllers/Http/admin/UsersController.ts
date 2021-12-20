@@ -1,6 +1,7 @@
 import User from 'App/Models/User'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
+import Route from '@ioc:Adonis/Core/Route'
 import UserValidator from 'App/Validators/UserValidator'
 import UserLockValidator from 'App/Validators/UserLockValidator'
 import SignupMailer from 'App/Mailers/SignupMailer'
@@ -13,6 +14,7 @@ export default class UsersController {
     const limit = 10
 
     const users = await User.query().paginate(page, limit)
+    users.baseUrl(Route.builder().make('admin_users.index'))
 
     return view.render('admin/users/index', {
       users,
