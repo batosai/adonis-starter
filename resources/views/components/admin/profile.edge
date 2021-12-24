@@ -1,68 +1,70 @@
-<button
-  class="align-middle rounded-full focus:shadow-outline-indigo focus:outline-none"
-  @click="toggleProfileMenu"
-  @click.away="closeProfileMenu"
-  @keydown.escape="closeProfileMenu"
-  aria-label="Account"
-  aria-haspopup="true"
->
-  @if(auth.user.avatar)
-    <img
-      class="object-cover w-8 h-8 rounded-full"
-      src="{{ auth.user.avatar?.url }}"
-      alt=""
-      aria-hidden="true"
-    />
-  @else
-    <div
-      class="p-3 w-10 text-orange-500 bg-orange-100 rounded-full dark:text-white dark:bg-gray-500"
-    >
-      @!svg.profile()
-    </div>
-  @end
-</button>
-
-<template x-if="isProfileMenuOpen">
-  <ul
-    x-transition:leave="transition ease-in duration-150"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    @click="closeProfileMenu"
-    @keydown.escape="closeProfileMenu"
-    class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
-    aria-label="submenu"
+<div x-data="dropdown()">
+  <button
+    class="align-middle rounded-full focus:shadow-outline-indigo focus:outline-none"
+    @click="toggle"
+    @click.away="close"
+    @keydown.escape="close"
+    aria-label="Account"
+    aria-haspopup="true"
   >
-    <li class="flex">
-      <a
-        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-        href="{{route('admin_users.edit', {id: auth.user.id})}}"
+    @if(auth.user.avatar)
+      <img
+        class="object-cover w-8 h-8 rounded-full"
+        src="{{ auth.user.avatar?.url }}"
+        alt=""
+        aria-hidden="true"
+      />
+    @else
+      <div
+        class="p-3 w-10 text-orange-500 bg-orange-100 rounded-full dark:text-white dark:bg-gray-500"
       >
         @!svg.profile()
-        <span>{{ t('admin.shared.profile') }}</span>
-      </a>
-    </li>
-    <li class="flex">
-      <a
-        class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-        href="#"
-      >
-        @!svg.settings()
-        <span>{{ t('admin.shared.settings') }}</span>
-      </a>
-    </li>
-    <li class="flex">
+      </div>
+    @end
+  </button>
 
-      <form action="{{ route('auth.signout') }}" method="POST" x-data="{}" class="w-full">
-        {{ csrfField() }}
+  <template x-if="isOpen">
+    <ul
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      @click="close"
+      @keydown.escape="close"
+      class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
+      aria-label="submenu"
+    >
+      <li class="flex">
         <a
           class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-          href="{{ route('SigninController.destroy') }}"
-          @click.prevent="(event) => event.target.closest('form').submit()"
+          href="{{route('admin_users.edit', {id: auth.user.id})}}"
         >
-          @!svg.logout()
-          <span>{{ t('admin.shared.logout') }}</span>
+          @!svg.profile()
+          <span>{{ t('admin.shared.profile') }}</span>
         </a>
-      </form>
-    </li>
-  </ul>
-</template>
+      </li>
+      <li class="flex">
+        <a
+          class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+          href="#"
+        >
+          @!svg.settings()
+          <span>{{ t('admin.shared.settings') }}</span>
+        </a>
+      </li>
+      <li class="flex">
+
+        <form action="{{ route('auth.signout') }}" method="POST" x-data="{}" class="w-full">
+          {{ csrfField() }}
+          <a
+            class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+            href="{{ route('SigninController.destroy') }}"
+            @click.prevent="(event) => event.target.closest('form').submit()"
+          >
+            @!svg.logout()
+            <span>{{ t('admin.shared.logout') }}</span>
+          </a>
+        </form>
+      </li>
+    </ul>
+  </template>
+</div>

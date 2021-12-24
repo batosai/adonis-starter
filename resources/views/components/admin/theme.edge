@@ -1,13 +1,13 @@
 <button
   class="rounded-md focus:outline-none focus:shadow-outline-indigo"
-  @click="toggleTheme"
+  @click="theme.toggle"
   aria-label="Toggle color mode"
 >
-  <template x-if="!dark">
+  <template x-if="!theme.dark">
     @!svg.theme()
   </template>
 
-  <template x-if="dark">
+  <template x-if="theme.dark">
     <svg
       class="w-5 h-5"
       aria-hidden="true"
