@@ -1,6 +1,0 @@
-{
-  "assets/app.css": "http://localhost:8080/assets/app.css",
-  "assets/app.js": "http://localhost:8080/assets/app.js",
-  "assets/admin.css": "http://localhost:8080/assets/admin.css",
-  "assets/admin.js": "http://localhost:8080/assets/admin.js"
-}
