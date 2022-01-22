@@ -6,3 +6,4 @@ coverage
 .env
 .env.testing
 tmp
+public/assets
