@@ -19,8 +19,8 @@ export default class SigninController {
 
     await auth.attempt(request.input('email'), request.input('password'), request.input('remember_me'))
 
-    auth.user.last_login_at = DateTime.local()
-    await auth.user.save()
+    auth.user!.lastLoginAt = DateTime.local()
+    await auth.user!.save()
 
     if (auth.user?.blocked) {
       session.flash('auth.blocked', i18n.formatMessage('auth.E_INVALID_BLOCKED'))
