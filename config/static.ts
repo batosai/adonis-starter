@@ -71,7 +71,7 @@ const staticConfig: AssetsConfig = {
   | Learn more: https://docs.adonisjs.com/guides/deployment#serving-static-assets
   |
   */
-  maxAge: 0,
+  maxAge: '365d',
 
   /*
   |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ const staticConfig: AssetsConfig = {
   | contents change.
   |
   */
-  immutable: false,
+  immutable: true,
 }
 
 export default staticConfig
