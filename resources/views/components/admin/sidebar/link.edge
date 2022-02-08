@@ -12,6 +12,7 @@
   @endif~
   "
   href="{{ href }}"
+  @click="sidebar.close"
 >
   {{{ await $slots.main() }}}
   @if($slots.main())~
