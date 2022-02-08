@@ -3,7 +3,7 @@ export default () => ({
   form: null,
 
   toggle() {
-    this.isOpen = ! this.isOpen
+    this.isOpen = !this.isOpen
   },
 
   open() {

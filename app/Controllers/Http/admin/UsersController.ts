@@ -26,11 +26,7 @@ export default class UsersController {
     return view.render('admin/users/create')
   }
 
-  public async store({
-    request,
-    response,
-    bouncer,
-  }: HttpContextContract) {
+  public async store({ request, response, bouncer }: HttpContextContract) {
     await bouncer.with('UserPolicy').authorize('create')
     const avatar = request.file('avatar')!
     /**
@@ -64,7 +60,7 @@ export default class UsersController {
   }
 
   public async update(ctx: HttpContextContract) {
-    const { request, response, auth, bouncer, } = ctx
+    const { request, response, auth, bouncer } = ctx
     const user = await User.findOrFail(request.param('id'))
 
     if (request.method() === 'PATCH') {
@@ -72,14 +68,11 @@ export default class UsersController {
       const payload = await request.validate(UserLockValidator)
       await user.merge(payload)
       await user.save()
-    }
-    else {
+    } else {
       await bouncer.with('UserPolicy').authorize('update', user)
       const avatar = request.file('avatar')!
 
-      const payload = await request.validate(
-        new UserValidator(ctx, user)
-      )
+      const payload = await request.validate(new UserValidator(ctx, user))
 
       await user.merge(payload)
 
@@ -96,11 +89,7 @@ export default class UsersController {
     }
   }
 
-  public async destroy({
-    params,
-    response,
-    bouncer,
-  }: HttpContextContract) {
+  public async destroy({ params, response, bouncer }: HttpContextContract) {
     const { id } = params
     const user = await User.findOrFail(id)
     await bouncer.with('UserPolicy').authorize('delete', user)

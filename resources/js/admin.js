@@ -14,7 +14,7 @@ import dropdown from './components/dropdown'
 
 Alpine.data('app', () => ({
   theme: theme(),
-  sidebar: sidebar()
+  sidebar: sidebar(),
 }))
 Alpine.data('modal', modal)
 Alpine.data('dropdown', dropdown)

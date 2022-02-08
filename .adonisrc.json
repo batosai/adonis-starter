@@ -21,9 +21,7 @@
     "./start/bouncer",
     {
       "file": "./start/validator",
-      "environment": [
-        "web"
-      ]
+      "environment": ["web"]
     }
   ],
   "providers": [
@@ -51,7 +49,5 @@
     },
     "resources/lang/**/*.(json|yaml)"
   ],
-  "aceProviders": [
-    "@adonisjs/repl"
-  ]
+  "aceProviders": ["@adonisjs/repl"]
 }

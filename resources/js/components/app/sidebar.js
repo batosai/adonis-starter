@@ -2,7 +2,7 @@ export default () => ({
   isOpen: false,
 
   toggle() {
-    this.sidebar.isOpen = ! this.sidebar.isOpen
+    this.sidebar.isOpen = !this.sidebar.isOpen
   },
 
   open() {

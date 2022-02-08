@@ -15,16 +15,28 @@ export default class SigninController {
   /**
    * Handle login form submissions
    */
-  public async store({ request, response, auth, session, i18n }: HttpContextContract) {
-
-    await auth.attempt(request.input('email'), request.input('password'), request.input('remember_me'))
+  public async store({
+    request,
+    response,
+    auth,
+    session,
+    i18n,
+  }: HttpContextContract) {
+    await auth.attempt(
+      request.input('email'),
+      request.input('password'),
+      request.input('remember_me'),
+    )
 
     auth.user!.lastLoginAt = DateTime.local()
     await auth.user!.save()
 
     if (auth.user?.blocked) {
-      session.flash('auth.blocked', i18n.formatMessage('auth.E_INVALID_BLOCKED'))
-      session.clear();
+      session.flash(
+        'auth.blocked',
+        i18n.formatMessage('auth.E_INVALID_BLOCKED'),
+      )
+      session.clear()
       return response.redirect('/signin')
     }
 

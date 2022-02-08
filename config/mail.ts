@@ -48,7 +48,6 @@ const mailConfig: MailConfig = {
       port: Env.get('SMTP_PORT'),
       ignoreTLS: Env.get('NODE_ENV') !== 'production',
     },
-
   },
 }
 

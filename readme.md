@@ -23,9 +23,6 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [ ] Unit test
 - [ ] e2e test with [cypress](https://www.cypress.io/)
 
-
-
-
 Replace sqlite by other : link
 
 # Installation
@@ -34,6 +31,7 @@ Replace sqlite by other : link
 npm install
 node ace generate:key
 ```
+
 ## Developing
 
 ```bash

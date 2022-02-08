@@ -12,7 +12,10 @@ export default class AppProvider {
   }
 
   public async ready() {
-    if (this.app.environment === 'web' && this.app.nodeEnvironment == 'development') {
+    if (
+      this.app.environment === 'web' &&
+      this.app.nodeEnvironment == 'development'
+    ) {
       await import('../start/maildev')
     }
   }

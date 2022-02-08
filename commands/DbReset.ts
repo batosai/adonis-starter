@@ -28,7 +28,6 @@ export default class DbReset extends BaseCommand {
   }
 
   public async run() {
-
     this.logger.info('Remove tmp/uploads')
     console.log('')
 

@@ -12,7 +12,7 @@ export default class Users extends BaseSchema {
       table.string('email').unique().notNullable()
       table.enu('role', ['admin', 'member']).notNullable().defaultTo('member')
 
-      table.boolean("blocked").notNullable().defaultTo(true);
+      table.boolean('blocked').notNullable().defaultTo(true)
       table.timestamp('disabled_on', { useTz: true })
 
       table.string('avatar')
@@ -24,7 +24,7 @@ export default class Users extends BaseSchema {
       // table.timestamp('created_at', { useTz: true })
       // table.timestamp('updated_at', { useTz: true })
 
-      table.string("remember_me_token").nullable()
+      table.string('remember_me_token').nullable()
 
       table.timestamps(true, true)
     })

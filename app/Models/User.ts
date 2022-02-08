@@ -39,7 +39,7 @@ export default class User extends BaseModel {
   public avatar: AttachmentContract | null
 
   @column()
-  public blocked: boolean;
+  public blocked: boolean
 
   @column()
   public rememberMeToken?: string | null

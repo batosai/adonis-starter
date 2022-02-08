@@ -13,11 +13,17 @@ export default class ResetPasswordValidator {
 
   public messages = {
     ...this.ctx.i18n.validatorMessages('validator.shared'),
-    'password.minLength': this.ctx.i18n.formatMessage('validator.shared.password.minLength', {
-      password_min_length: PASSWORD_MIN_LENGTH
-    }),
-    'password_confirmation.minLength': this.ctx.i18n.formatMessage('validator.shared.password_confirmation.minLength', {
-      password_min_length: PASSWORD_MIN_LENGTH
-    }),
+    'password.minLength': this.ctx.i18n.formatMessage(
+      'validator.shared.password.minLength',
+      {
+        password_min_length: PASSWORD_MIN_LENGTH,
+      },
+    ),
+    'password_confirmation.minLength': this.ctx.i18n.formatMessage(
+      'validator.shared.password_confirmation.minLength',
+      {
+        password_min_length: PASSWORD_MIN_LENGTH,
+      },
+    ),
   }
 }

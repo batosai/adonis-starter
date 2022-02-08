@@ -1,6 +1,5 @@
 import MailDev from 'maildev'
 
-
 const maildev = new MailDev({
   // basePathname: '/maildev'
 })

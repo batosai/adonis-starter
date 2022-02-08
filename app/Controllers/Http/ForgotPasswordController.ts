@@ -4,7 +4,6 @@ import ForgotPasswordValidator from 'App/Validators/ForgotPasswordValidator'
 import ForgotPasswordMailer from 'App/Mailers/ForgotPasswordMailer'
 
 export default class ForgotPasswordController {
-
   public async create({ view }: HttpContextContract) {
     return view.render('auth/forgot-password')
   }
