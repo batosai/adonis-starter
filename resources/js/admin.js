@@ -6,7 +6,7 @@ import Editor from './scripts/editor'
 import Datepicker from './scripts/datepicker'
 
 import Alpine from 'alpinejs'
-import trap from '@alpinejs/trap'
+import focus from '@alpinejs/focus'
 import theme from './components/app/theme'
 import sidebar from './components/app/sidebar'
 import modal from './components/modal'
@@ -19,7 +19,7 @@ Alpine.data('app', () => ({
 Alpine.data('modal', modal)
 Alpine.data('dropdown', dropdown)
 
-Alpine.plugin(trap)
+Alpine.plugin(focus)
 
 Alpine.start()
 
