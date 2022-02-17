@@ -19,7 +19,6 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Alpinejs
 - [x] Webpack encore
 - [x] Hotwired turbo
-- [x] [Maildev](https://github.com/maildev/maildev)
 - [ ] Unit test
 - [ ] e2e test with [cypress](https://www.cypress.io/)
 

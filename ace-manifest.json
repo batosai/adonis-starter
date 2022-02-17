@@ -12,18 +12,6 @@
       "aliases": [],
       "flags": []
     },
-    "maildev": {
-      "settings": {
-        "loadApp": false,
-        "stayAlive": true
-      },
-      "commandPath": "./commands/Maildev",
-      "commandName": "maildev",
-      "description": "Start the maildev",
-      "args": [],
-      "aliases": [],
-      "flags": []
-    },
     "make:scaffold": {
       "settings": {
         "loadApp": false,

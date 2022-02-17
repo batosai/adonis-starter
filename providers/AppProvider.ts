@@ -11,14 +11,7 @@ export default class AppProvider {
     // IoC container is ready
   }
 
-  public async ready() {
-    if (
-      this.app.environment === 'web' &&
-      this.app.nodeEnvironment == 'development'
-    ) {
-      await import('../start/maildev')
-    }
-  }
+  public async ready() {}
 
   public async shutdown() {
     // Cleanup, since app is going down

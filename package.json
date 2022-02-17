@@ -6,15 +6,13 @@
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node build/server.js",
-    "format": "prettier --write .",
-    "maildev": "node ace maildev"
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.4.1",
     "@symfony/webpack-encore": "^1.8.1",
     "adonis-preset-ts": "^2.1.0",
     "color": "^4.2.1",
-    "maildev": "^1.1.0",
     "pino-pretty": "^7.5.1",
     "postcss-loader": "^6.2.1",
     "prettier": "^2.5.1",

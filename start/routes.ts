@@ -66,5 +66,3 @@ Route.get('/health', async ({ response }: HttpContextContract) => {
   const report = await HealthCheck.getReport()
   return report.healthy ? response.ok(report) : response.badRequest(report)
 })
-
-Route.on('/maildev').redirectToPath('http://0.0.0.0:1080')
