@@ -1,5 +1,4 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Logger from '@ioc:Adonis/Core/Logger'
 import User from 'App/Models/User'
 import ResetPasswordValidator from 'App/Validators/ResetPasswordValidator'
 
