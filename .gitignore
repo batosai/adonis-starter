@@ -5,8 +5,11 @@ coverage
 .DS_STORE
 .env
 .env.testing
-tmp
 public/assets
+
+# tmp files
+tmp/*
+!tmp/.gitkeep
 
 
 # yarn v2
