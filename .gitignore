@@ -7,3 +7,13 @@ coverage
 .env.testing
 tmp
 public/assets
+
+
+# yarn v2
+.yarn/*
+# !.yarn/cache # Uncomment for zero-install
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+# .pnp.* # Comment for zero-install
