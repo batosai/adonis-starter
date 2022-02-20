@@ -11,7 +11,7 @@ export default class DbReset extends BaseCommand {
   /**
    * Command description is displayed in the "help" output
    */
-  public static description = 'Drop databe and execute seed'
+  public static description = 'Drop database and execute seed'
 
   public static settings = {
     /**
