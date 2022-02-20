@@ -10,6 +10,7 @@ export default class UserSeeder extends BaseSeeder {
         username: 'Jeremy',
         email: 'admin@adonis.com',
         password: 'adonis',
+        blocked: false,
         role: 'admin',
       },
     ])
