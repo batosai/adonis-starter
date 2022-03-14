@@ -27,10 +27,22 @@ Replace sqlite by other : link
 # Installation
 
 ```bash
-npm install
+npm install (or yarn)
 node ace generate:key
 node ace migration:run
 node ace db:seed
+```
+
+@vscode/sqlite3 package require python2, if you rencontred error :
+
+```
+npm install --build-from-source --python=/usr/bin/python2
+```
+
+or 
+
+```
+yarn --build-from-source --python=/usr/bin/python2
 ```
 
 ## Developing
