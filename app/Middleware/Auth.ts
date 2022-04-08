@@ -14,7 +14,7 @@ export default class AuthMiddleware {
   /**
    * The URL to redirect to when request is Unauthorized
    */
-  protected redirectTo = Route.makeUrl('auth.signin')
+  protected redirectTo = Route.builder().make('auth.signin')
 
   /**
    * Authenticates the current HTTP request against a custom set of defined
@@ -25,9 +25,19 @@ export default class AuthMiddleware {
    * during the current request.
    */
   protected async authenticate(
+    request: HttpContextContract['request'],
     auth: HttpContextContract['auth'],
     guards: (keyof GuardsList)[],
   ) {
+
+    if (request.url()) {
+      this.redirectTo = Route.builder().qs({
+        qs: {
+          redirect_to: request.url(),
+        }
+      }).make('auth.signin')
+    }
+
     /**
      * Hold reference to the guard last attempted within the for loop. We pass
      * the reference of the guard to the "AuthenticationException", so that
@@ -65,7 +75,7 @@ export default class AuthMiddleware {
    * Handle request
    */
   public async handle(
-    { auth }: HttpContextContract,
+    { auth, request }: HttpContextContract,
     next: () => Promise<void>,
     customGuards: (keyof GuardsList)[],
   ) {
@@ -74,7 +84,7 @@ export default class AuthMiddleware {
      * the config file
      */
     const guards = customGuards.length ? customGuards : [auth.name]
-    await this.authenticate(auth, guards)
+    await this.authenticate(request, auth, guards)
     await next()
   }
 }

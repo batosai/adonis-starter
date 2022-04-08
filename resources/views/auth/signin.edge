@@ -43,6 +43,8 @@
       @end
     @end
 
+    @!form.input({ type: 'hidden', name: 'redirect_to', value: redirectTo })
+
     @!form.submit({ text: t('form.signin.login') })
   </form>
 

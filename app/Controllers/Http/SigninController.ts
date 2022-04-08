@@ -8,8 +8,10 @@ export default class SigninController {
   /**
    * Show form to login
    */
-  public async create({ view }: HttpContextContract) {
-    return view.render('auth/signin')
+  public async create({ request, view }: HttpContextContract) {
+    return view.render('auth/signin', {
+      redirectTo: request.input('redirect_to', '/admin')
+    })
   }
 
   /**
