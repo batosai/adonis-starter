@@ -32,9 +32,7 @@ export default class AuthMiddleware {
 
     if (request.url()) {
       this.redirectTo = Route.builder().qs({
-        qs: {
-          redirect_to: request.url(),
-        }
+        redirect_to: request.url(),
       }).make('auth.signin')
     }
 
