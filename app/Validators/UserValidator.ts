@@ -11,14 +11,16 @@ export enum Roles {
 export default class UserValidator {
   constructor(protected ctx: HttpContextContract, protected user: User | void) {
     const fields = {
-      username: schema.string({ escape: true, trim: true }, [
+      username: schema.string([
+        rules.escape(),
+        rules.trim(),
         rules.minLength(2),
         rules.maxLength(255),
       ]),
       email: schema.string({}, emailUniqueRules(user)),
       password: user
-        ? schema.string.optional({ trim: true }, passwordRules())
-        : schema.string({ trim: true }, passwordRules()),
+        ? schema.string.optional(passwordRules())
+        : schema.string(passwordRules()),
       avatar: schema.file.optional({
         extnames: ['jpg', 'png', 'jpeg', 'heic'],
         size: '2mb',

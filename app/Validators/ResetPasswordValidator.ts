@@ -8,7 +8,7 @@ export default class ResetPasswordValidator {
 
   public schema = schema.create({
     email: schema.string({}, emailExistsRules()),
-    password: schema.string({ trim: true }, passwordRules()),
+    password: schema.string(passwordRules()),
   })
 
   public messages = {
