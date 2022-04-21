@@ -45,7 +45,7 @@
       "settings": {
         "loadApp": true
       },
-      "commandPath": "@adonisjs/core/build/commands/ListRoutes",
+      "commandPath": "@adonisjs/core/build/commands/ListRoutes/index",
       "commandName": "list:routes",
       "description": "List application routes",
       "args": [],
