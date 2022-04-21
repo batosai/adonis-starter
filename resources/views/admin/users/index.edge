@@ -99,24 +99,40 @@
                 {{ t('app.date', { value: user.createdAt }) }}
               </td>
               <td class="px-4 py-3">
-                <div class="flex items-center space-x-4 text-sm" x-data="modal()">
+                <div class="flex items-center space-x-4 text-sm">
                   <a href="{{route('admin_users.edit', {id: user.id})}}"
                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                     aria-label="Edit"
                   >
                     @!svg.edit()
                   </a>
+                  @can('ImpersonatePolicy.create', user)
+                    <div x-data="modal()">
+                      <form @submit.prevent="form = $el; open()" action="{{route('impersonate.store', {id: user.id})}}" method="POST">
+                        {{ csrfField() }}
+                        <button
+                          class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                          aria-label="Impersonate"
+                        >
+                          @!svg.impersonate()
+                        </button>
+                        @!admin.confirm({ title: `Impersonate ${user.username}`, text: 'Are you sure ?'})
+                      </form>
+                    </div>
+                  @end
                   @can('UserPolicy.delete', user)
-                    <form @submit.prevent="form = $el; open()" action="{{route('admin_users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
-                      {{ csrfField() }}
-                      <button
-                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                        aria-label="Delete"
-                      >
-                        @!svg.delete()
-                      </button>
-                      @!admin.confirm({ title: `Delete ${user.username}`, text: 'Are you sure ?'})
-                    </form>
+                    <div x-data="modal()">
+                      <form @submit.prevent="form = $el; open()" action="{{route('admin_users.destroy', {id: user.id}, { qs: { _method: 'DELETE' }})}}" method="POST">
+                        {{ csrfField() }}
+                        <button
+                          class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                          aria-label="Delete"
+                        >
+                          @!svg.delete()
+                        </button>
+                        @!admin.confirm({ title: `Delete ${user.username}`, text: 'Are you sure ?'})
+                      </form>
+                    </div>
                   @end
                 </div>
               </td>

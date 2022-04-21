@@ -1,5 +1,5 @@
-import User from 'App/Models/User'
 import { BasePolicy } from '@ioc:Adonis/Addons/Bouncer'
+import User from 'App/Models/User'
 
 export default class UserPolicy extends BasePolicy {
   public async viewList(currentUser: User) {

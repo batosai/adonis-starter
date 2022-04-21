@@ -6,4 +6,14 @@
 @section('body')
   <a href="/admin">Admin</a>
   {{{ content }}}
+
+  <hr />
+  <br />
+  @if(auth.user)
+    <p>{{ auth.user.username }}</p>
+    <form action="{{route('impersonate.destroy', { qs: { _method: 'DELETE' }})}}" method="POST">
+      {{ csrfField() }}
+      <button>Stop impersonate</button>
+    </form>
+  @end
 @end

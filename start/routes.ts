@@ -22,7 +22,9 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', 'HomeController.index').as('home')
+Route.get('/', 'HomeController.index').as('home').middleware('impersonate')
+Route.post('/impersonate/:id', 'ImpersonatesController.store').as('impersonate.store').middleware('auth')
+Route.delete('/impersonate', 'ImpersonatesController.destroy').as('impersonate.destroy').middleware('auth')
 
 import './routes/auth'
 import './routes/admin'
