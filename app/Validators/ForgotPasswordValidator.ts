@@ -5,6 +5,6 @@ export default class ForgotPasswordValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    email: schema.string({}, emailExistsRules()),
+    email: schema.string(emailExistsRules()),
   })
 }

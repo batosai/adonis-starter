@@ -17,7 +17,7 @@ export default class UserValidator {
         rules.minLength(2),
         rules.maxLength(255),
       ]),
-      email: schema.string({}, emailUniqueRules(user)),
+      email: schema.string(emailUniqueRules(user)),
       password: user
         ? schema.string.optional(passwordRules())
         : schema.string(passwordRules()),
