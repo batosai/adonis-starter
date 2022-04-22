@@ -44,7 +44,7 @@ const databaseConfig: DatabaseConfig = {
       },
       useNullAsDefault: true,
       healthCheck: false,
-      debug: false,
+      debug: Env.get('NODE_ENV') === 'development',
     },
   },
 }
