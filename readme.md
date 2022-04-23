@@ -24,8 +24,6 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [ ] Unit test
 - [ ] e2e test with [cypress](https://www.cypress.io/)
 
-Replace sqlite by other : link
-
 # Installation
 
 ```bash
@@ -35,6 +33,7 @@ node ace migration:run
 node ace db:seed
 ```
 
+sqlite is a default solution.
 @vscode/sqlite3 package require python2, if you rencontred error :
 
 ```
@@ -51,4 +50,5 @@ yarn --build-from-source --python=/usr/bin/python2
 
 ```bash
 npm run dev
+visite [http://localhost:3333/admin](http://localhost:3333/admin)
 ```
