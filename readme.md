@@ -50,5 +50,5 @@ yarn --build-from-source --python=/usr/bin/python2
 
 ```bash
 npm run dev
-visite [http://localhost:3333/admin](http://localhost:3333/admin)
+visite http://localhost:3333/admin
 ```
