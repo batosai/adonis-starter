@@ -4,7 +4,7 @@ coverage
 .vscode
 .DS_STORE
 .env
-.env.testing
+.env.test
 public/assets
 
 # tmp files
