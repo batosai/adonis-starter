@@ -31,6 +31,7 @@ export default class DbReset extends BaseCommand {
     this.logger.info('Remove tmp/uploads')
     console.log('')
 
+    // Remove upload dir
     await execa('rm', ['-rf', Application.tmpPath('uploads')], {
       stdio: 'inherit',
     })
