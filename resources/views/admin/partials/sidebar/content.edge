@@ -20,7 +20,7 @@
     @can('UserPolicy.viewList')
     <li class="relative px-6 py-3">
       @component('components/admin/sidebar/link', {
-        isActive: request.matchesRoute(['admin_users.index', 'admin_users.create', 'admin_users.store', 'admin_users.edit', 'admin_users.update']) ,
+        isActive: request.matchesRoute(['admin_users.index', 'admin_users.create', 'admin_users.edit']) ,
         text: t('admin.shared.users'),
         href: route('admin_users.index')
       })
@@ -55,20 +55,41 @@
           <li
             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           >
-            <a class="w-full" href="#">item 1</a>
+            <a class="w-full" href="#">Table & pagination</a>
           </li>
           <li
             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           >
             <a class="w-full" href="#">
-              item 2
+              Modal & confirm
             </a>
           </li>
           <li
             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
           >
             <a class="w-full" href="#">
-              item 3
+              Form
+            </a>
+          </li>
+          <li
+            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+          >
+            <a class="w-full" href="#">
+              Buttons & tags
+            </a>
+          </li>
+          <li
+            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+          >
+            <a class="w-full" href="#">
+              Stat
+            </a>
+          </li>
+          <li
+            class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+          >
+            <a class="w-full" href="#">
+              System
             </a>
           </li>
         </ul>
