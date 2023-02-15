@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid'
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
+import { compose } from '@ioc:Adonis/Core/Helpers'
 import {
   column,
   beforeCreate,
@@ -10,9 +11,10 @@ import {
 import {
   attachment,
   AttachmentContract,
-} from '@ioc:Adonis/Addons/AttachmentLite'
+  Attachmentable
+} from '@ioc:Adonis/Addons/AttachmentAdvanced'
 
-export default class User extends BaseModel {
+export default class User extends compose(BaseModel, Attachmentable) {
   public static selfAssignPrimaryKey = true
 
   // Columns

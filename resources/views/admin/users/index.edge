@@ -49,7 +49,7 @@
                     @if(user.avatar)
                       <img
                         class="object-cover w-full h-full rounded-full"
-                        src="{{ user.avatar.url }}"
+                        src="{{ user.avatar.variant('thumbnail')?.url }}"
                         alt=""
                         loading="lazy"
                       />

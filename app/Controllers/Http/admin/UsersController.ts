@@ -1,6 +1,6 @@
 import User from 'App/Models/User'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
+import { Attachment } from '@ioc:Adonis/Addons/AttachmentAdvanced'
 import Route from '@ioc:Adonis/Core/Route'
 import UserValidator from 'App/Validators/UserValidator'
 import UserLockValidator from 'App/Validators/UserLockValidator'

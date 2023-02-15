@@ -7,7 +7,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Sign in form
 - [x] Logout
 - [x] List / create / delete users in admin page
-- [x] Avatar upload by attachment-lite
+- [x] Avatar upload by attachment-advanced
 - [x] Forgot password
 - [x] Email create password
 - [x] Roles and permissions with AdonisJS bouncers
