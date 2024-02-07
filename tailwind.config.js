@@ -5,6 +5,5 @@ module.exports = {
   theme: {
     themeVariants: ['dark'],
   },
-  // plugins: [require('tailwindcss-multi-theme'), require('@tailwindcss/forms')],
   plugins: [require('@tailwindcss/forms')],
 }
