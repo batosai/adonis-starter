@@ -20,9 +20,6 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Webpack encore
 - [x] Hotwired turbo
 - [x] Impersonating users
-- [ ] Page list components
-- [ ] Unit test
-- [ ] e2e test with [cypress](https://www.cypress.io/)
 
 # Installation
 
@@ -52,3 +49,6 @@ yarn --build-from-source --python=/usr/bin/python2
 npm run dev
 visite http://localhost:3333/admin
 ```
+
+<img src="screenshots/screen1.png">
+<img src="screenshots/screen2.png">
