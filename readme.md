@@ -1,4 +1,6 @@
-# MVP starter
+# Starter kit for AdonisJS 5
+
+/!\ For AdonisJS v6 : [here](https://github.com/batosai/adonis-starter-kit)
 
 A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.com) framework.
 
